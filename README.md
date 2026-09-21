@@ -19,9 +19,11 @@ With the help of a function method, makes a rough estimate of readout parameters
 <p align="center">
   <img src="images/Square_Pulse_Readout_Class_workflow.png" width="300">
 </p>
+
 ### Usage of the Class
-1. Import the class 
-2. Pass the parameters
+  1. Import the class 
+  2. Pass the parameters
+  3. 
 ## Three-Segment Optimization Class
 The optimization class uses the readout duration $T$, the resonator linewidth $\kappa$, the dispersive shift $\chi$, the maximum mean photon number $\rm n_{\mathrm{max}}$ and the  initial Three-segment pulse parameters ($\Delta t_{i} \, a_{i}$) for initialization and execution of the class.
 
