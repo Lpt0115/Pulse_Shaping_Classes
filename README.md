@@ -1,3 +1,7 @@
+# Working principles of the classes
+
+
+
 ## Square pulse analysis class
 This class uses the input output relations to analyse the readout signal, if a square pulse is used. Thereby, the relevant experimental parameters can be estimated. The working principle is the following:
 
