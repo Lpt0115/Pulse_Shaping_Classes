@@ -5,4 +5,4 @@ Using the integrated sate separation ratio \autoref{eq:cost_three_seg} as a cost
 The robustness of the optimized pulse parameters to the values of $\kappa$  and $\chi$ on real setups is estimated by varying the values for $\kappa$ and $\chi$ while the optimized readout parameters are fixed and the instant mean photon number $n$ after the end of the Three-segment pulse is compared to the residual photon number $\rm n_0$ because of thermal occupation \autoref{tab:opt_three_sens_n_0} and more important to the instant mean photon number for a square pulse $\rm n /  \rm n_{sq} >1$ \autoref{tab:opt_three_sens_n_sq}. 
 
 
-![Workflow](images/Three_Segment_Class_workflow.png)
+<img src="inages/Three_Segment_Class_workflow.png" alt="Beschreibung",width="300">
