@@ -1,4 +1,19 @@
 # Introduction
+These classes are written for the master's thesis project "Pulse Shaping for optimal superconducting qubit readout", Philipp Thamm at Karlsruhe Institut for Thehnology (KIT).
+As the name implies, this project is embedded in the research field of quantum computing and deals with a physics motivated engeneering task.
+Without going furhter into the details for readers with less physical background, a brief motiviation will be outlined:
+
+Measuring a qubit state is not as simple as for a classical measurement, since it is a quantum state. 
+A way to measure the qubit state is realized by coupling the system to an quantum-mechanical LC oscillator. The fequency of the resonator becomes dependent on the qubit state.
+
+Before starting with pulse shaping, it is essential to know the sepcifc parameters of the experimental setup for qubit readout.
+
+A square pulse readout analysis class was written for parameter extraction of time domain readout signals that is as a prerequesit for pulse shaping.
+Square pulse for superconducting qubit readout comes at cost of a rather slow decay of the readout signal after the information about the qubit state is obtained.
+
+For a more optimized readout a method of adding square pulses was used. This method aims for a signal suppression after the state of the qubit has already been obtained.
+
+
 ## Working principles of the classes
 
 
