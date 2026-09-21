@@ -8,7 +8,8 @@ Without going furhter into the details for readers with less physical background
   A way to measure the qubit state is realized by coupling the system to an quantum-mechanical LC oscillator.<br>
   The resonance fequency of the resonator becomes dependent on the qubit state.<br>
   This allows to distinguish the qubit state by sending a readout microwave signal<br>
-  with a moderate amplitude at frequency between the two qubit statedependent resonance frequencies $\omega_{rf}$ and to the resonator<br>
+  with a moderate amplitude at frequency between the two qubit state-dependent<br>
+  resonance frequencies $\omega_{rf}$ and to the resonator<br>
   and measuring the reflected signal.<br>
   
 
