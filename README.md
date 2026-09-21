@@ -4,13 +4,13 @@ These classes are written for the master's thesis project "Pulse Shaping for opt
 As the name implies, this project is embedded in the research field of quantum computing and deals with a physics motivated engeneering task.
 Without going furhter into the details for readers with less physical background, a brief motiviation will be outlined:
 
-    Measuring a qubit state is not as simple as for a classical measurement, since it is a quantum state.
-    A way to measure the qubit state is realized by coupling the system to an quantum-mechanical LC oscillator.
-    The resonance fequency of the resonator becomes dependent on the qubit state.
-    This allows to distinguish the qubit state by sending a readout microwave signal
-    with a moderate amplitude at frequency between the two qubit state-dependent
-    resonance frequencies $$\omega_{rf}$$ and to the resonator
-    and measuring the reflected signal
+Measuring a qubit state is not as simple as for a classical measurement, since it is a quantum state.
+A way to measure the qubit state is realized by coupling the system to an quantum-mechanical LC oscillator.
+The resonance fequency of the resonator becomes dependent on the qubit state.
+This allows to distinguish the qubit state by sending a readout microwave signal
+with a moderate amplitude at frequency between the two qubit state-dependent
+resonance frequencies $\omega_{rf}$ and to the resonator
+and measuring the reflected signal
 
 
 Before starting with pulse shaping, it is essential to know the sepcifc parameters of the experimental setup for qubit readout.
