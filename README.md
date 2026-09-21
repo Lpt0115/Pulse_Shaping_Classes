@@ -8,5 +8,5 @@ The robustness of the optimized pulse parameters to the values of $\kappa$  and 
   <img src="images/Three_Segment_Class_workflow.png" width="300">
 </p>
 <p align="center">
-  <em>Workflow behind the Three-segment pulse optimization class Initializing the class with the setup parameters runs the optimization using the cost function \autoref{eq:cost_three_seg} and returns the optimized <br>       pulse parameters '$\Delta t_{i}$ and $a_{i})$' with '$i=1,\,2,\,3$'.</em>
+  <em>Workflow behind the Three-segment pulse optimization class Initializing the class with the setup parameters runs the optimization using the cost function and returns the optimized <br>       pulse parameters '$\Delta t_{i}$ and $a_{i})$' with '$i=1,\,2,\,3$'.</em>
 </p>
