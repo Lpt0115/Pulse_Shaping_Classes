@@ -12,7 +12,7 @@ The square pulse analysis class  is initialized by passing the time array, the I
 IQ_traj(x_data,i_data,q_data,n_cal) 
 
 The class normalizes the amplitude of both quadratures by the maximum of the absolute amplitude of the signal.
-With the help of a function method, makes a rough estimate of readout parameters initial_pars(self,x_data,y):
+With the help of a function method, makes a rough estimate of readout parameters:
 
 
 
