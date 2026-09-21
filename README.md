@@ -24,7 +24,7 @@ With the help of a function method, makes a rough estimate of readout parameters
   1. Import the class 
   2. Pass the parameters
 
----
+|--|
 
 ## Three-Segment Optimization Class
 The optimization class uses the readout duration $T$, the resonator linewidth $\kappa$, the dispersive shift $\chi$, the maximum mean photon number $\rm n_{\mathrm{max}}$ and the  initial Three-segment pulse parameters ($\Delta t_{i} \, a_{i}$) for initialization and execution of the class.
