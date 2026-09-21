@@ -10,7 +10,7 @@ The resonance fequency of the resonator becomes dependent on the qubit state.
 This allows to distinguish the qubit state by sending a readout microwave signal
 with a moderate amplitude at frequency between the two qubit state-dependent
 resonance frequencies $\omega_{rf}$ and to the resonator
-and measuring the reflected signal
+and measuring the reflected signal.
 
 
 Before starting with pulse shaping, it is essential to know the sepcifc parameters of the experimental setup for qubit readout.
@@ -41,6 +41,7 @@ With the help of a function method, makes a rough estimate of readout parameters
   <img src="images/Square_Pulse_Readout_Class_workflow.png" width="300">
 </p>
 Applying this analysis class to both qubit state-dependent readput signal, the difference in detuning gives the frequency shift between the two responses of the resonator which is linked to the coupling to the qubit.
+
 ### Three-Segment Optimization Class
 The optimization class uses the readout duration $T$, the resonator linewidth $\kappa$, the dispersive shift $\chi$, the maximum mean photon number $\rm n_{\mathrm{max}}$ and the  initial Three-segment pulse parameters ($\Delta t_{i} \, a_{i}$) for initialization and execution of the class.
 
