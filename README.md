@@ -12,7 +12,7 @@ The square pulse analysis class  is initialized by passing the time array, the I
 IQ_traj(x_data,i_data,q_data,n_cal) 
 
 The class normalizes the amplitude of both quadratures by the maximum of the absolute amplitude of the signal.
-With the help of a function method, makes a rough estimate of readout parameters initial_pars(self,x_data,y).
+With the help of a function method, makes a rough estimate of readout parameters initial_pars(self,x_data,y):
 
 
 
@@ -30,5 +30,5 @@ Using the integrated sate separation ratio as a cost function, the optimal pulse
 <p align="center">
   <img src="images/Three_Segment_Class_workflow.png" width="300">
 </p>
-  Workflow behind the Three-segment pulse optimization class Initializing the class with the setup parameters runs the optimization using the cost function and returns the optimized <br>       pulse parameters $\Delta t_{i}$ and $a_{i}$ with $i=1,\,2,\,3$.
+
 
