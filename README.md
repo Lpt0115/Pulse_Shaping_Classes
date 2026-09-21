@@ -38,7 +38,7 @@ With the help of a function method, makes a rough estimate of readout parameters
 
 
 <p align="center">
-  <img src="images/Square_Pulse_Readout_Class_workflow.png" width="300">
+  <img src="images/Square_Pulse_Readout_Class_workflow.png" width="500">
 </p>
 Applying this analysis class to both qubit state-dependent readput signal, the difference in detuning gives the frequency shift between the two responses of the resonator which is linked to the coupling to the qubit.
 
@@ -50,7 +50,7 @@ Inside the class, from the initial only the free pulse parameters are passed to 
 Using the integrated sate separation ratio as a cost function, the optimal pulse parameters are returned:
 
 <p align="center">
-  <img src="images/Three_Segment_Class_workflow.png" width="300">
+  <img src="images/Three_Segment_Class_workflow.png" width="500">
 </p>
 
 
