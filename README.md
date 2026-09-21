@@ -1,4 +1,8 @@
-# Three-Segment Optimization Class
+## Square pulse analysis class
+This class uses the input output relations to analyse the readout signal, if a square pulse is used. Thereby, the relevant experimental parameters can be estimated. The working principle is the following:
+
+
+## Three-Segment Optimization Class
 The optimization class uses the readout duration $T$, the resonator linewidth $\kappa$, the dispersive shift $\chi$, the maximum mean photon number $\rm n_{\mathrm{max}}$ and the  initial Three-segment pulse parameters ($\Delta t_{i} \, a_{i}$) for initialization and execution of the class.
 Inside the class, from the initial only the free pulse parameters are passed to the python module \mintinline{python}{scipy.optimize.minimize()}.
 Using the integrated sate separation ratio \autoref{eq:cost_three_seg} as a cost function, the optimal pulse parameters are returned \autoref{flow-chart:Three_seg_class}.
