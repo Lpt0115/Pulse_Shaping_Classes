@@ -9,7 +9,7 @@ Without going furhter into the details for readers with less physical background
     The resonance fequency of the resonator becomes dependent on the qubit state.
     This allows to distinguish the qubit state by sending a readout microwave signal
     with a moderate amplitude at frequency between the two qubit state-dependent
-    resonance frequencies $'\omega_{rf}'$ and to the resonator
+    resonance frequencies $$\omega_{rf}$$ and to the resonator
     and measuring the reflected signal
 
 
