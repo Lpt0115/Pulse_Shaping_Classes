@@ -14,6 +14,12 @@ IQ_traj(x_data,i_data,q_data,n_cal)
 The class normalizes the amplitude of both quadratures by the maximum of the absolute amplitude of the signal.
 With the help of a function method, makes a rough estimate of readout parameters \mintinline{python}{initial_pars(self,x_data,y)}.
 
+
+
+<p align="center">
+  <img src="images/Square_Pulse_Readout_Class_workflow.png" width="300">
+</p>
+
 ## Three-Segment Optimization Class
 The optimization class uses the readout duration $T$, the resonator linewidth $\kappa$, the dispersive shift $\chi$, the maximum mean photon number $\rm n_{\mathrm{max}}$ and the  initial Three-segment pulse parameters ($\Delta t_{i} \, a_{i}$) for initialization and execution of the class.
 
