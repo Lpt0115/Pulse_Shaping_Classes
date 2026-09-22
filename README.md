@@ -36,7 +36,7 @@ The folowing parameters are passed to the class for intitializing:
 |---------|----|-----------|
 |'x_data'|'np.ndarray'|time data (ns)|
 |'i_data'|'np.ndarray'|I-quadrature data (V)|
-|'q_data'|'np.ndarray'|Q-quadrature data (V))|
+|'q_data'|'np.ndarray'|Q-quadrature data (V)|
 |'n_cal'|'float'|AC-Stark calibration factor ($\braket{\rm n} / \rm a^{2}$)|
 ```python
 IQ_traj(x_data,i_data,q_data,n_cal)
