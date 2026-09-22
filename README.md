@@ -50,7 +50,8 @@ help(RO_class_5.IQ_traj)
 ```
     
 
-### Methods       
+### Methods
+These methods are executed internaly by the class after initialization:
 -------  
 ```python
 fid_out(self)
