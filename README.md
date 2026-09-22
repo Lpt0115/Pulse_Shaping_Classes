@@ -34,9 +34,9 @@ from ANAlysis_class_ro.RO_class_5 import IQ_traj
 The folowing parameters are passed to the class for intitializing:
 |Parameter|Type|Description|
 |---------|----|-----------|
-|'x'|'np.ndarray'|time data (ns)|
-|'i'|'np.ndarray'|I-data (V)|
-|'q'|'np.ndarray'|Q-data (V))|
+|'x_data'|'np.ndarray'|time data (ns)|
+|'i_data'|'np.ndarray'|I-quadrature data (V)|
+|'q_data'|'np.ndarray'|Q-quadrature data (V))|
 |'n_cal'|'float'|AC-Stark calibration factor ($\braket{\rm n} / \rm a^{2}$)|
 ```python
 IQ_traj(x_data,i_data,q_data,n_cal)
@@ -48,20 +48,6 @@ For detailed information on specific modules of the class the help() module can 
 help(IQ_traj)
 ```
     
-### Parameters       
-----------
-x: np.ndarray
-    time data (ns)
-i: np.ndarray
-    I-data
-
-q: np.ndarray
-    Q-data
-
-n_cal: float
-    photon number calibration factor 
-
-
 
 ### Methods       
 -------  
