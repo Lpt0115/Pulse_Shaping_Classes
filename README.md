@@ -1,8 +1,8 @@
 # Introduction
 These classes are written for the master's thesis project "Pulse Shaping for optimal superconducting qubit readout", Philipp Thamm at Karlsruhe Institut for Thehnology (KIT).
 
-As the name implies, this project is embedded in the research field of quantum computing and deals with a physics motivated engeneering task.
-Without going furhter into the details for readers with less physical background, a brief motiviation will be outlined:
+As the name implies, this project is embedded in the research field of quantum computing and deals with a physics motivated engineering task.
+Without going further into the details for readers with less physical background, a brief motivation will be outlined:
 
 Measuring a qubit state is not as simple as for a classical measurement, since it is a quantum state.
 A way to measure the qubit state is realized by coupling the system to an quantum-mechanical LC oscillator.
@@ -13,8 +13,8 @@ resonance frequencies $\omega_{rf}$ and to the resonator
 and measuring the reflected signal.
 
 
-Before starting with pulse shaping, it is essential to know the sepcifc parameters of the experimental setup for qubit readout.
-A square pulse readout analysis class was written for parameter extraction of time domain readout signals that is as a prerequesit for pulse shaping.
+Before starting with pulse shaping, it is essential to know the sepcific parameters of the experimental setup for qubit readout.
+A square pulse readout analysis class was written for parameter extraction of time domain readout signals that is as a prerequisite for pulse shaping.
 
 Square pulse for superconducting qubit readout comes at cost of a rather slow decay of the readout signal after the information about the qubit state is obtained.
 For a more optimized readout a method of adding square pulses was used. This method aims for a signal suppression after the state of the qubit has already been obtained.
@@ -29,7 +29,7 @@ For a more optimized readout a method of adding square pulses was used. This met
 from ANAlysis_class_ro import RO_class_5
 from ANAlysis_class_ro.RO_class_5 import IQ_traj
 ```
-### Intitialising and executing the class
+### Intitializing and executing the class
 ```python
 IQ_traj(x_data,i_data,q_data,n_cal)
 ```
@@ -105,7 +105,7 @@ With the help of a function method, makes a rough estimate of readout parameters
 <p align="center">
   <img src="images/Square_Pulse_Readout_Class_workflow.png" width="500">
 </p>
-Applying this analysis class to both qubit state-dependent readput signal, the difference in detuning gives the frequency shift between the two responses of the resonator which is linked to the coupling to the qubit.
+Applying this analysis class to both qubit state-dependent readout signal, the difference in detuning gives the frequency shift between the two responses of the resonator which is linked to the coupling to the qubit.
 
 # Three-Segment Optimization Class
 ## Usage
