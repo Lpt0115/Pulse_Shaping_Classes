@@ -70,25 +70,25 @@ pcov: (np.ndarray, np.ndarray)
 ```python
     plot(self)
 ```
-    1. Displays the drive amplitude, the decay rate kappa, and the detuning in MHz
-     2. Plots the real and imaginary normalized measured readout data and the fitted output field to 
-        the intra-cavity field model over time
-     3. Parametric plot of the noramlized data and model
-    
-    Returns
-    -------
-    popt, pcov: np.ndarray(), (np.ndarray, np.ndarray)
-                fit result parameters and the covariance matrix
+1. Displays the drive amplitude, the decay rate kappa, and the detuning in MHz
+2. Plots the real and imaginary normalized measured readout data and the fitted output field to 
+    the intra-cavity field model over time
+3. Parametric plot of the noramlized data and model
+
+Returns
+-------
+popt, pcov: np.ndarray(), (np.ndarray, np.ndarray)
+            fit result parameters and the covariance matrix
 
 
 
 ```python
 plot_t_domain(self)
 ````
-    1. Plots the normalized drive field over time
-    2. Plots the real and imaginary part of the intra-cavity field over time  
-    3. Plots the real and imaginary normalized measured readout data and the fitted output field to 
-        the intra-cavity field model over time  
+1. Plots the normalized drive field over time
+2. Plots the real and imaginary part of the intra-cavity field over time  
+3. Plots the real and imaginary normalized measured readout data and the fitted output field to 
+    the intra-cavity field model over time  
         
 ## Working principle
 This class uses the input output relations to analyse the readout signal, if a square pulse is used. Thereby, the relevant experimental parameters can be estimated.
