@@ -34,7 +34,85 @@ IQ_traj(x_data,i_data,q_data,n_cal)
 
 The class normalizes the amplitude of both quadratures by the maximum of the absolute amplitude of the signal.
 With the help of a function method, makes a rough estimate of readout parameters:
+Workflow (in notebook file)
+--------
+'''python
+    >>> from ANAlysis_class_ro import RO_class_5
+    >>> from ANAlysis_class_ro.RO_class_5 import IQ_traj
+    >>> IQ_traj(x_data,i_data,q_data,n_cal)
+    ...
+    #For documentation use help()
+    >>> help(IQ_traj)
+    '''
+    Parameters       
+    ----------
+    x: np.ndarray
+        time data (ns)
+  i: np.ndarray
+        I-data
 
+    q: np.ndarray
+        Q-data
+
+    n_cal: float
+        photon number calibration factor 
+ 
+    Attributes
+    ----------
+    a_out: np.ndarray, dtype=complex 
+        normalized complex output field
+        
+    a_in: np.ndarraydtype=complex     
+        normalized complex input field
+        
+    alpha: np.ndarray, dtype=complex   
+        complex intra-cavity field
+        
+    pars: np.ndarray, dtype=float  
+        (amplitde_drive,duration,time delay,phase_drive,_,kappa,detuning_resonator,_,_,_,phase_reference)
+        
+    ro_pars: np.ndarray, dtype = float 
+        fitted pars   
+        (amplitde_drive,duration,time delay,phase_drive,_,kappa,detuning_resonator,_,_,_,phase_reference)
+        
+    ro_dict: (parameter name and fitted paramtere value 
+    
+
+    Methods       
+    -------  
+    fid_out(self)
+        Fitting the output field to the intra-cavity field model
+        
+        Returns
+        -------
+        popt: np.ndarray()
+            optimized parameters
+            
+        pcov: (np.ndarray, np.ndarray)
+            covariance matrix of the optimized parameters
+
+
+
+    plot(self)
+        1. Displays the drive amplitude, the decay rate kappa, and the detuning in MHz
+         2. Plots the real and imaginary normalized measured readout data and the fitted output field to 
+            the intra-cavity field model over time
+         3. Parametric plot of the noramlized data and model
+        
+        Returns
+        -------
+        popt, pcov: np.ndarray(), (np.ndarray, np.ndarray)
+                    fit result parameters and the covariance matrix
+
+
+
+
+    plot_t_domain(self)
+        1. Plots the normalized drive field over time
+        2. Plots the real and imaginary part of the intra-cavity field over time  
+        3. Plots the real and imaginary normalized measured readout data and the fitted output field to 
+            the intra-cavity field model over time  
+    """
 
 
 <p align="center">
