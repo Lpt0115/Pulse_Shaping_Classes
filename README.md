@@ -45,7 +45,7 @@ IQ_traj(x_data,i_data,q_data,n_cal)
 For detailed information on specific modules of the class the help() module can be used.
 ```python
 #For documentation use help()
-help(IQ_traj)
+help(RO_class_5.IQ_traj)
 ```
     
 
@@ -112,7 +112,7 @@ from opt_three_segment_final import three_seg
 |---------|----|-----------|
 |'T'|'float'|total pulse duration (µs)|
 |'kappa'|'float'| decay rate $\kappa$ of the resonator (1e6/s)|
-|'chi'|'np.ndarray'|dispersive shift $\chi$ (1e6/s)|
+|'chi'|'float'|dispersive shift $\chi$ (1e6/s)|
 |'n_max'|'float'|Maximum mean photon number $\braket{\rm n}_{\rm max}$|
 |'three_seg_pulse_pars'|'np.ndarray'|Initial three-segment pulse parameters ($\sum_{i=1}{^3}\Delta t_{i} \, a_{i}$)$|
 ```python
