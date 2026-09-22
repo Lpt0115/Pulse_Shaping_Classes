@@ -21,7 +21,7 @@ For a more optimized readout a method of adding square pulses was used. This met
 
 
 # Square pulse analysis class
-The class uses a linear intra-cavity field $ßalpha(t)$ model to extract the linwidth of the resonator $\kappa$ and the detuning $\delta$ of the readout tone to the resonance frequnecy for a measured reflected output signal by fitting the model to the complex data. 
+The class uses a linear intra-cavity field $\alpha(t)$ model to extract the linwidth of the resonator $\kappa$ and the detuning $\delta$ of the readout tone to the resonance frequnecy for a measured reflected output signal by fitting the model to the complex data. 
 ## Usage
 ----------
 ### Importing the class
