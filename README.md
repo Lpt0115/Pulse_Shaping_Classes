@@ -39,7 +39,7 @@ IQ_traj(x_data,i_data,q_data,n_cal)
 help(IQ_traj)
 ```
     
-Parameters       
+### Parameters       
 ----------
 x: np.ndarray
     time data (ns)
@@ -54,7 +54,7 @@ n_cal: float
 
 
 
-Methods       
+### Methods       
 -------  
 ```python
 fid_out(self)
