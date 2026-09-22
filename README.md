@@ -62,7 +62,7 @@ help(RO_class_5.IQ_traj)
     the intra-cavity field model over time
 3. Parametric plot of the noramlized data and model
 
-#### Returns
+##### Returns
 -------
 popt, pcov: np.ndarray(), (np.ndarray, np.ndarray)<br>
     fit result parameters and the covariance matrix
@@ -121,7 +121,7 @@ help(opt_three_segment_final.three_seg)
 opt_out(self)
 ````
 1. fit
-#### Returns
+##### Returns
 -------
 ## Working principle
 The optimization class uses the readout duration $T$, the resonator linewidth $\kappa$, the dispersive shift $\chi$, the maximum mean photon number $\rm n_{\mathrm{max}}$ and the  initial Three-segment pulse parameters ($\Delta t_{i} \, a_{i}$) for initialization and execution of the class.
