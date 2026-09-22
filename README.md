@@ -34,19 +34,19 @@ IQ_traj(x_data,i_data,q_data,n_cal)
 
 The class normalizes the amplitude of both quadratures by the maximum of the absolute amplitude of the signal.
 With the help of a function method, makes a rough estimate of readout parameters:
-#### Usage
+## Usage
 ----------
-##### Importing the class
+### Importing the class
 -------------------------
 ```python
 from ANAlysis_class_ro import RO_class_5
 from ANAlysis_class_ro.RO_class_5 import IQ_traj
 ```
-##### Intitialising and executing the class
+### Intitialising and executing the class
 ```python
 IQ_traj(x_data,i_data,q_data,n_cal)
 ```
-##### Documentation
+### Documentation
 ```python
 #For documentation use help()
 help(IQ_traj)
