@@ -121,7 +121,17 @@ With the help of a function method, makes a rough estimate of readout parameters
   <img src="images/Square_Pulse_Readout_Class_workflow.png" width="500">
 </p>
 Applying this analysis class to both qubit state-dependent readput signal, the difference in detuning gives the frequency shift between the two responses of the resonator which is linked to the coupling to the qubit.
-#### Three-Segment Optimization Class
+
+# Three-Segment Optimization Class
+## Usage
+```python
+import opt_three_segment_final
+from opt_three_segment_final import three_seg
+three_seg(T,kappa,chi,n_max,three_seg_pulse_pars)
+# for documentation use help()
+help(opt_three_segment_final.four_seg)
+```
+## Working principle
 The optimization class uses the readout duration $T$, the resonator linewidth $\kappa$, the dispersive shift $\chi$, the maximum mean photon number $\rm n_{\mathrm{max}}$ and the  initial Three-segment pulse parameters ($\Delta t_{i} \, a_{i}$) for initialization and execution of the class.
 
 Inside the class, from the initial only the free pulse parameters are passed to the python module <bf>scipy.optimize.minimize()</bf>
