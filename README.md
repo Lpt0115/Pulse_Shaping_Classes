@@ -61,7 +61,7 @@ fid_out(self)
 ````
 Fits the output field to the intra-cavity field model
     
-Returns
+#### Returns
 -------
 popt: np.ndarray()
         optimized parameters
@@ -77,7 +77,7 @@ pcov: (np.ndarray, np.ndarray)
     the intra-cavity field model over time
 3. Parametric plot of the noramlized data and model
 
-Returns
+#### Returns
 -------
 popt, pcov: np.ndarray(), (np.ndarray, np.ndarray)
             fit result parameters and the covariance matrix
