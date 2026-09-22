@@ -109,13 +109,30 @@ Applying this analysis class to both qubit state-dependent readout signal, the d
 
 # Three-Segment Optimization Class
 ## Usage
+----------
+### Importing the class
+-------------------------
 ```python
 import opt_three_segment_final
 from opt_three_segment_final import three_seg
+```
+### Intitializing and executing the class
+```python
 three_seg(T,kappa,chi,n_max,three_seg_pulse_pars)
-# for documentation use help()
+````
+### Documentation reference
+```python
 help(opt_three_segment_final.three_seg)
 ```
+
+### Methods       
+-------  
+```python
+opt_out(self)
+````
+1. fit
+#### Returns
+-------
 ## Working principle
 The optimization class uses the readout duration $T$, the resonator linewidth $\kappa$, the dispersive shift $\chi$, the maximum mean photon number $\rm n_{\mathrm{max}}$ and the  initial Three-segment pulse parameters ($\Delta t_{i} \, a_{i}$) for initialization and execution of the class.
 
