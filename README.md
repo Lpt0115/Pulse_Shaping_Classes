@@ -58,11 +58,11 @@ Fits the output field to the intra-cavity field model
     
 #### Returns
 
-    popt: np.ndarray()<br>
-        optimized parameters
-            
-    pcov: (np.ndarray, np.ndarray)<br>
-        covariance matrix of the optimized parameters
+popt: np.ndarray()<br>
+    optimized parameters
+        
+pcov: (np.ndarray, np.ndarray)<br>
+    covariance matrix of the optimized parameters
 
 ```python
     plot(self)
