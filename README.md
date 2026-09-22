@@ -21,6 +21,7 @@ For a more optimized readout a method of adding square pulses was used. This met
 
 
 # Square pulse analysis class
+The class uses a linear intra-cavity field $ßalpha(t)$ model to extract the linwidth of the resonator $\kappa$ and the detuning $\delta$ of the readout tone to the resonance frequnecy for a measured reflected output signal by fitting the model to the complex data. 
 ## Usage
 ----------
 ### Importing the class
@@ -30,10 +31,18 @@ from ANAlysis_class_ro import RO_class_5
 from ANAlysis_class_ro.RO_class_5 import IQ_traj
 ```
 ### Intitializing and executing the class
+The folowing parameters are passed to the class for intitializing.
+|Parameter|Type|Description|
+|---------|----|-----------|
+|'x'|'np.ndarray'|time data (ns)|
+|'i'|'np.ndarray'|I-data (V)|
+|'q'|'np.ndarray'|Q-data (V))|
+|'n_cal'|'float'|AC-Stark calibration factor ($\braket{\rm n} / \rm a^{2}$)|
 ```python
 IQ_traj(x_data,i_data,q_data,n_cal)
 ```
 ### Documentation reference
+For detailed information on specific modules of the class the help() module can be used.
 ```python
 #For documentation use help()
 help(IQ_traj)
