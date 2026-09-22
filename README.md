@@ -52,25 +52,6 @@ q: np.ndarray
 n_cal: float
     photon number calibration factor 
 
-Attributes
-----------
-a_out: np.ndarray, dtype=complex 
-    normalized complex output field
-    
-a_in: np.ndarraydtype=complex     
-    normalized complex input field
-    
-alpha: np.ndarray, dtype=complex   
-    complex intra-cavity field
-    
-pars: np.ndarray, dtype=float  
-    (amplitde_drive,duration,time delay,phase_drive,_,kappa,detuning_resonator,_,_,_,phase_reference)
-    
-ro_pars: np.ndarray, dtype = float 
-    fitted pars   
-    (amplitde_drive,duration,time delay,phase_drive,_,kappa,detuning_resonator,_,_,_,phase_reference)
-    
-ro_dict: (parameter name and fitted paramtere value 
 
 
 Methods       
@@ -86,8 +67,9 @@ popt: np.ndarray()
 pcov: (np.ndarray, np.ndarray)
         covariance matrix of the optimized parameters
 
-
+```python
     plot(self)
+```
     1. Displays the drive amplitude, the decay rate kappa, and the detuning in MHz
      2. Plots the real and imaginary normalized measured readout data and the fitted output field to 
         the intra-cavity field model over time
@@ -100,8 +82,9 @@ pcov: (np.ndarray, np.ndarray)
 
 
 
-
+```python
 plot_t_domain(self)
+````
     1. Plots the normalized drive field over time
     2. Plots the real and imaginary part of the intra-cavity field over time  
     3. Plots the real and imaginary normalized measured readout data and the fitted output field to 
