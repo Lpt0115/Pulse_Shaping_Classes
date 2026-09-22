@@ -31,7 +31,7 @@ from ANAlysis_class_ro import RO_class_5
 from ANAlysis_class_ro.RO_class_5 import IQ_traj
 ```
 ### Intitializing and executing the class
-The folowing parameters are passed to the class for intitializing.
+The folowing parameters are passed to the class for intitializing:
 |Parameter|Type|Description|
 |---------|----|-----------|
 |'x'|'np.ndarray'|time data (ns)|
