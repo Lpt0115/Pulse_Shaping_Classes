@@ -56,8 +56,10 @@ n_cal: float
 
 Methods       
 -------  
+```python
 fid_out(self)
-    Fitting the output field to the intra-cavity field model
+````
+Fits the output field to the intra-cavity field model
     
 Returns
 -------
