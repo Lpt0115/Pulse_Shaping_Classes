@@ -122,7 +122,7 @@ opt_out(dt)
 ````
 Executes the optimization for the Three-Segment Pulse by minimizing the cost function
 ##### Returns
- 'res': Optimized Three-segment pulse parameters
+##### 'res': Optimized Three-segment pulse parameters
 -------
 ## Working principle
 The optimization class uses the readout duration $T$, the resonator linewidth $\kappa$, the dispersive shift $\chi$, the maximum mean photon number $\rm n_{\mathrm{max}}$ and the  initial Three-segment pulse parameters ($\Delta t_{i} \, a_{i}$) for initialization and execution of the class.
