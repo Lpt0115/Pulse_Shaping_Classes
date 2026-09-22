@@ -53,18 +53,6 @@ help(RO_class_5.IQ_traj)
 ### Methods
 These methods are executed internaly by the class after initialization:
 -------  
-```python
-fid_out(self)
-````
-Fits the output field to the intra-cavity field model
-    
-#### Returns
-
-popt: np.ndarray()<br>
-        optimized parameters
-        
-pcov: (np.ndarray, np.ndarray)<br>
-        covariance matrix of the optimized parameters
 
 ```python
     plot(self)
