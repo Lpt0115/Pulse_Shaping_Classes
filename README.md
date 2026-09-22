@@ -93,7 +93,7 @@ pcov: (np.ndarray, np.ndarray)
         covariance matrix of the optimized parameters
 
 
-plot(self)
+    plot(self)
     1. Displays the drive amplitude, the decay rate kappa, and the detuning in MHz
      2. Plots the real and imaginary normalized measured readout data and the fitted output field to 
         the intra-cavity field model over time
