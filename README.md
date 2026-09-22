@@ -107,7 +107,7 @@ plot_t_domain(self)
     3. Plots the real and imaginary normalized measured readout data and the fitted output field to 
         the intra-cavity field model over time  
         
-## Working principles of the classes
+## Working principle
 This class uses the input output relations to analyse the readout signal, if a square pulse is used. Thereby, the relevant experimental parameters can be estimated.
 The intra-cavity parameters such as the linewidth $\kappa$ and the dispersive shift $\chi$ can be experimentally obtained by the state-dependent resonator phase response. Similarly, these parameters can be found by analyzing the readout signal of a square pulse.
 Parameter extraction is performed using a square pulse analysis class. 
