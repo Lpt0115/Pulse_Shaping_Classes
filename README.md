@@ -51,7 +51,7 @@ help(RO_class_5.IQ_traj)
     
 
 ### Methods
-These methods are executed internaly by the class after initialization:
+#### These methods are executed internaly by the class after initialization:
 -------  
 
 ```python
@@ -115,7 +115,7 @@ help(opt_three_segment_final.three_seg)
 ```
 
 ### Methods
-Internal methods called by the class after initialization:
+#### Internal methods called by the class after initialization:
 -------  
 ```python
 opt_out(self)
