@@ -126,7 +126,8 @@ three_seg(T,kappa,chi,n_max,three_seg_pulse_pars)
 help(opt_three_segment_final.three_seg)
 ```
 
-### Methods       
+### Methods
+Internal methods called by the class after initialization:
 -------  
 ```python
 opt_out(self)
