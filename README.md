@@ -57,7 +57,7 @@ fid_out(self)
 Fits the output field to the intra-cavity field model
     
 #### Returns
-    -------
+
     popt: np.ndarray()<br>
         optimized parameters
             
