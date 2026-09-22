@@ -27,6 +27,7 @@ The class uses a linear intra-cavity field $\alpha(t)$ model to extract the linw
 ### Importing the class
 -------------------------
 ```python
+#Assuming ANAlysis_class_ro is the working directory
 from ANAlysis_class_ro import RO_class_5
 from ANAlysis_class_ro.RO_class_5 import IQ_traj
 ```
@@ -104,6 +105,7 @@ This class estimates optimal pulse parameters for a qubit readout using a Three-
 ### Importing the class
 -------------------------
 ```python
+#Assuming opt_three_segment_final is the working directory
 import opt_three_segment_final
 from opt_three_segment_final import three_seg
 ```
