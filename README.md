@@ -130,7 +130,10 @@ Executes the optimization for the Three-Segment Pulse by minimizing the cost fun
     plot_pulse()
 ```
 Plotting of the optimized Three-Segment Pulse (normalized by sqrt(kappa)) over time 
-
+```python
+    plot(self.res)
+```
+Plotting of the intra-cavaity field trajectory for the qubit in $\ket{\rm{g}$ and in $\ket{\rm{e}}$.
 -------
 ## Working principle
 The optimization class uses the readout duration $T$, the resonator linewidth $\kappa$, the dispersive shift $\chi$, the maximum mean photon number $\rm n_{\mathrm{max}}$ and the  initial Three-segment pulse parameters ($\Delta t_{i} \, a_{i}$) for initialization and execution of the class.
