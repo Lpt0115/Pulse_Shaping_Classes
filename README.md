@@ -106,12 +106,7 @@ plot_t_domain(self)
     2. Plots the real and imaginary part of the intra-cavity field over time  
     3. Plots the real and imaginary normalized measured readout data and the fitted output field to 
         the intra-cavity field model over time  
-
-
-<p align="center">
-  <img src="images/Square_Pulse_Readout_Class_workflow.png" width="500">
-</p>
-Applying this analysis class to both qubit state-dependent readput signal, the difference in detuning gives the frequency shift between the two responses of the resonator which is linked to the coupling to the qubit.
+        
 ## Working principles of the classes
 This class uses the input output relations to analyse the readout signal, if a square pulse is used. Thereby, the relevant experimental parameters can be estimated.
 The intra-cavity parameters such as the linewidth $\kappa$ and the dispersive shift $\chi$ can be experimentally obtained by the state-dependent resonator phase response. Similarly, these parameters can be found by analyzing the readout signal of a square pulse.
@@ -122,9 +117,10 @@ IQ_traj(x_data,i_data,q_data,n_cal)
 
 The class normalizes the amplitude of both quadratures by the maximum of the absolute amplitude of the signal.
 With the help of a function method, makes a rough estimate of readout parameters:
-
-
-
+<p align="center">
+  <img src="images/Square_Pulse_Readout_Class_workflow.png" width="500">
+</p>
+Applying this analysis class to both qubit state-dependent readput signal, the difference in detuning gives the frequency shift between the two responses of the resonator which is linked to the coupling to the qubit.
 #### Three-Segment Optimization Class
 The optimization class uses the readout duration $T$, the resonator linewidth $\kappa$, the dispersive shift $\chi$, the maximum mean photon number $\rm n_{\mathrm{max}}$ and the  initial Three-segment pulse parameters ($\Delta t_{i} \, a_{i}$) for initialization and execution of the class.
 
