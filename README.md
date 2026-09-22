@@ -130,11 +130,10 @@ Using the integrated sate separation ratio as a cost function, the optimal pulse
 <p align="center">
   <img src="images/Three_Segment_Class_workflow.png" width="500">
 </p>
-````python
+```python
 import opt_three_segment_final
 from opt_three_segment_final import four_seg
 three_seg(T,kappa,chi,n_max,three_seg_pulse_pars)
-    ...
 # for documentation use help()
 help(opt_three_segment_final.four_seg)
 ```
