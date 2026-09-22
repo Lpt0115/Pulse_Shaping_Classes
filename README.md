@@ -84,14 +84,13 @@ Methods
 fid_out(self)
     Fitting the output field to the intra-cavity field model
     
-    Returns
-    -------
-    popt: np.ndarray()
+Returns
+-------
+popt: np.ndarray()
         optimized parameters
         
-    pcov: (np.ndarray, np.ndarray)
+pcov: (np.ndarray, np.ndarray)
         covariance matrix of the optimized parameters
-
 
 
 plot(self)
