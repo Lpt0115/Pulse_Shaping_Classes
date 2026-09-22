@@ -43,7 +43,7 @@ Workflow (in notebook file)
     ...
     #For documentation use help()
     >>> help(IQ_traj)
-    '''
+'''
     
 Parameters       
 ----------
