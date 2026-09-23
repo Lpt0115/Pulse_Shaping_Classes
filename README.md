@@ -107,8 +107,8 @@ For initailizing the class these parameters are required:
 |Parameter|Type|Description|
 |---------|----|-----------|
 |'T'|'float'|total pulse duration (µs)|
-|'kappa'|'float'| decay rate $\kappa$ of the resonator (1e6/s)|
-|'chi'|'float'|dispersive shift $\chi$ (1e6/s)|
+|'kappa'|'float'| decay rate $\kappa$ of the resonator (1e6 rad/s)|
+|'chi'|'float'|dispersive shift $\chi$ (1e6 rad/s)|
 |'n_max'|'float'|Maximum mean photon number $\braket{\rm n}_{\rm max}$|
 |'three_seg_pulse_pars'|'np.ndarray'|Initial three-segment pulse parameters ($\sum_{i=1}^{3}{\Delta t_{i} \, a_{i}})$|
 ```python
