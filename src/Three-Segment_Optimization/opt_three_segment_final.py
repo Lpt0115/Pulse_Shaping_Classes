@@ -356,9 +356,9 @@ class three_seg:
     # Visualising and calculating the SNR ratio and improvment compared to square pulse    
     def get_SNR_ratio(self,args,args2):
         """
-        Plotting of the instant state separation over time for the Three-Segment Pulse (args) 
+        Plotting of the squared instantaneous state separation over time for the Three-Segment Pulse (args) 
         compared to the instant state separation for the Square Pulse(args2)
-        and plotting of the instant mean photon number over time for the Three-Segment Pulse 
+        and plotting of the instantaneous mean photon number over time for the Three-Segment Pulse 
         and for the Square Pulse 
         """
         kappa = self.kappa
@@ -394,7 +394,7 @@ class three_seg:
         plt.vlines(self.T,0,1e6,linestyle='dashed',color='green',label=fr'$\rm{{T}} = {self.T}\,\rm{{µs}}$')
         plt.xlabel("t (µs)",fontsize=18)
         plt.xlim(0.*T,T*1.5)
-        plt.ylabel(r" $| \alpha_{e}(t) - \alpha_{\rm{g}}(t) |^{2} \ \left(\bar{\rm{n}}\right)$",fontsize =18)
+        plt.ylabel(r" $|\alpha_{|\rm{g}\rangle}(t) - \alpha_{|\rm{e}\rangle}(t) |^{2} \ \left(\bar{\rm{n}}\right)$",fontsize =18)
         plt.yscale('log')
         plt.ylim(2e-3,1e1)
         plt.title(r"Instantaneous State Separation",fontsize=18)
@@ -412,7 +412,7 @@ class three_seg:
         plt.hlines(0.01523,0.1*args[0],T+.379,linestyle='dashed',color='brown',label=fr'Thermal population $\mathrm{{n}}_{{0}} = {0.0015}$')
         plt.xlabel(r"t (µs)",fontsize=18)
         plt.xlim(0.1*args[0],T*1.3)
-        plt.ylabel(r" $\left(| \alpha_{e}(t)|^{2} + |\alpha_{\rm{g}}(t) |^{2}\right)/2 \ \left(\bar{\rm{n}}\right)$",fontsize=18)
+        plt.ylabel(r" $\left(| \alpha_{|\rm{g}\rangle}(t)|^{2} + |\alpha_{|\rm{e}\rangle}(t)|^{2}\right)/2 \ \left(\bar{\rm{n}}\right)$",fontsize=18)
         plt.yscale('log')
         plt.ylim(5e-3,max_inst_n_mean_three_seg*1.2)
         plt.hlines(max_inst_n_mean_three_seg,0.,1.6*T,label=f'n_max <= {max_inst_n_mean_three_seg}'
@@ -430,9 +430,9 @@ class three_seg:
         n_t2 = self.get_n_int(args2,T)
         n_res2 = np.sum((np.abs(a_g2[discr2:])**(2)+np.abs(a_e2[discr2:])**(2))/2.)*kappa*det
         n_res = np.sum((np.abs(a_g[discr:])**(2)+np.abs(a_e[discr:])**(2))/2.)*kappa*det
-        print(f"n_int pulse_4_seg = {n_t}")
+        print(f"n_int pulse_three_seg = {n_t}")
         print(f"n_int pulse_square = {n_t2}")
-        print(f"n residual_4_seg = {n_res}")
+        print(f"n residual_three_seg = {n_res}")
         print(f"n_int residual_square = {n_res2}")
         SNR_rungup = np.sqrt(2*kappa*np.sum(np.abs(a_g[:discr]-a_e[:discr])**(2)*det/len(t[:discr])))
         SNR_afterT = np.sqrt(2*kappa*np.sum(np.abs(a_g[discr:cutoff]-a_e[discr:cutoff])**(2)*det))
@@ -442,17 +442,17 @@ class three_seg:
         SNR_ratio2 = (SNR_afterT2/SNR_rungup2)
         imp = SNR_ratio2/SNR_ratio #improvement factor
 
-        print("Int. SNR from 0 to T three segmenself:",SNR_rungup)
+        print("Int. SNR from 0 to T three-segment:",SNR_rungup)
         print("Int. SNR from 0 to T square:",SNR_rungup2)
-        print("Int. SNR/n_res from 0 to T three segment:",SNR_rungup/n_res)
-        print("Int. SNR/n_res from 0 to T square:",SNR_rungup2/n_res2)
+        #print("Int. SNR/n_res from 0 to T three-segment:",SNR_rungup/n_res)
+        #print("Int. SNR/n_res from 0 to T square:",SNR_rungup2/n_res2)
         #print("Int. SNR from T to cutoff three segmenself:",SNR_afterT)
         #print("Int. SNR from T to cutoff square:",SNR_afterT2)
-        #print("SNR ratio three segmenself:",SNR_ratio)
-        #print("SNR ratio square:",SNR_ratio2)
+        print("SNR ratio three-segment:",SNR_ratio)
+        print("SNR ratio square:",SNR_ratio2)
         #print("Improvementby factor of:",imp)
         #print(f"Improvement by : {20*np.log10(imp)} dB")
-        print(f" Residual photon number  {(n_res/n_res2)*100:.3f} % of residual photons of a square pulse ")
+        print(f" Residual photon number  {(n_res/n_res2)*100:.6f} % of residual photons of a square pulse ")
         
 
 
@@ -584,15 +584,15 @@ class three_seg:
         plt.rcParams['lines.linewidth'] =3.0
         plt.savefig("Plot_graphics/_Three_seg_pulse.svg",bbox_inches='tight')
         plt.show()
-        N= len(self.t_evaluate)
-        spec_pulse = np.fft.fft(self.three_segments(self.t_evaluate,self.res))
-        freq_pulse = np.fft.fftfreq(N,(self.t_evaluate[1]-self.t_evaluate[0]))
+        #N= len(self.t_evaluate)
+        #spec_pulse = np.fft.fft(self.three_segments(self.t_evaluate,self.res))
+        #freq_pulse = np.fft.fftfreq(N,(self.t_evaluate[1]-self.t_evaluate[0]))
         #mask = freq_pulse >=0
-        plt.plot(freq_pulse,abs(spec_pulse)*(1/N))
-        plt.xlabel("f (MHz)")
-        plt.ylabel(r"FFT($\mathrm{a}_{\mathrm{in}}$)")
-        plt.xlim(-15,15)
-        plt.show()
+        #plt.plot(freq_pulse,abs(spec_pulse)*(1/N))
+        #plt.xlabel("f (MHz)")
+        #plt.ylabel(r"FFT($\mathrm{a}_{\mathrm{in}}$)")
+        #plt.xlim(-15,15)
+        #plt.show()
 
         
     def plot(self,pars):
@@ -603,15 +603,15 @@ class three_seg:
         out_e = (ae -self.three_segments(t,pars)/self.kappa)
         out_g_sq = (ag2 - self.square_pulse(t,self.opt_square)/self.kappa)
         out_e_sq = (ae2 - self.square_pulse(t,self.opt_square)/self.kappa)
-        plt.plot(t,abs(out_g_sq),label='square |g>')
-        plt.plot(t,abs(out_e_sq),label='square |e>')
-        plt.plot(t,abs(out_g),label='Three seg |g>')
-        plt.plot(t,abs(out_e),label='Three seg |e>')
-        plt.xlabel("t / µs")
+        plt.plot(t,abs(out_g_sq),label=r'square $|\rm{g}\rangle$')
+        plt.plot(t,abs(out_e_sq),label=r'square $|\rm{e}\rangle$')
+        plt.plot(t,abs(out_g),label=r'Thre-segment $|\rm{g}\rangle$')
+        plt.plot(t,abs(out_e),label=r'Three-segment $|\rm{e}\rangle$')
+        plt.xlabel("t (µs)")
         plt.xlim(0,(self.T+0.379)*1.1)
-        plt.ylabel(r"$\Im{\left[\mathrm{out}\right]}$")
-        plt.yscale('log')
-        plt.ylim(0.9*np.sqrt(0.0124),5e0)
+        plt.ylabel(r"$|\rm{a}_{\rm{out}}|$")
+        #plt.yscale('log')
+        #plt.ylim(0.9*np.sqrt(0.0124),5e0)
         plt.legend()
         plt.grid(True,'major')
         plt.title(r"Output field $|a(t)|$")
@@ -621,17 +621,17 @@ class three_seg:
         plt.plot(np.real(out_e_sq),np.imag(out_e_sq),label='Square',linestyle='dashed')
         plt.plot(np.real(out_g),np.imag(out_g),label='|g>')
         plt.plot(np.real(out_e),np.imag(out_e),label='|e>')
-        plt.xlabel(r"$\Im{\left[\mathrm{out}\right]}$")
-        plt.ylabel(r"$\Im{\left[\mathrm{out}\right]}$")
+        plt.xlabel(r"$\rm{Re}\left(\rm{a}_{\rm{out}}\right)$")
+        plt.ylabel(r"$\rm{Im}\left(\rm{a}_{\rm{out}}\right)$")
         plt.legend()
         plt.grid(True,'major')
-        plt.title(r"Output field $\mathrm{a}_{\mathrm{out}}(t)$ on IQ plane")
+        plt.title(r"Output field $\rm{a}_{\rm{out}}(t)$ on IQ plane")
         plt.show()
        
         plt.figure(figsize=(3.,3.))
-        plt.plot(self.cav_sol(np.asarray(pars))[1].real,self.cav_sol(np.asarray(pars))[1].imag,label=r"$|\mathrm{g} \rangle$",color='b')
+        plt.plot(self.cav_sol(np.asarray(pars))[1].real,self.cav_sol(np.asarray(pars))[1].imag,label=r"$|\rm{g}\rangle$",color='b')
         plt.plot(self.cav_sol(np.asarray(self.opt_square))[1].real,self.cav_sol(np.asarray(self.opt_square))[1].imag,linestyle='dashed',color='b')
-        plt.plot(self.cav_sol(np.asarray(pars))[2].real,self.cav_sol(np.asarray(pars))[2].imag,label=r"$|\mathrm{e} \rangle$",color='r')
+        plt.plot(self.cav_sol(np.asarray(pars))[2].real,self.cav_sol(np.asarray(pars))[2].imag,label=r"$|\rm{e}\rangle$",color='r')
         plt.plot(self.cav_sol(np.asarray(self.opt_square))[2].real,self.cav_sol(np.asarray(self.opt_square))[2].imag,linestyle='dashed',color='r')
 
         plt.xlabel(r"$\mathrm{Re}\left(\alpha\right)$",fontsize=18)
@@ -709,7 +709,7 @@ class three_seg:
         self.plot_pulse()
         self.plot(self.res)
         #self.plot(self._pass_initials(self.guessed))
-        
+        self.get_SNR_ratio(self.res,self.opt_square)
         
     def desired_amp_add(self,dur,tf,n_des):
         def func_n(A):
