@@ -133,6 +133,11 @@ Plotting of the optimized Three-Segment Pulse (normalized by sqrt(kappa)) over t
     plot(self.res)
 ```
 Plotting of the intra-cavaity field trajectory for the qubit in $\ket{\rm{g}}$ and in $\ket{\rm{e}}$.
+### Parameter storage
+The optimized thrree-segment pulse paramteres are accessible through the class attribute
+```python
+    self.res
+```
 
 ### Documentation reference
 ```python
