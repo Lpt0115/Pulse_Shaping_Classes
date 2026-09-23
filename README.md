@@ -62,11 +62,6 @@ help(RO_class_5.IQ_traj)
     the intra-cavity field model over time
 3. Parametric plot of the noramlized data and model
 
-##### Returns
--------
-popt, pcov: np.ndarray(), (np.ndarray, np.ndarray)<br>
-    fit result parameters and the covariance matrix
-
 
 
 ```python
