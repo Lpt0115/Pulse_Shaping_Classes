@@ -79,7 +79,8 @@ For detailed information on specific modules of the class the help() module can 
 #For documentation use help()
 help(RO_class_5.IQ_traj)
 ```
-        
+### Mititgation of issues    
+Providing experimental readout data, that has a rather smooth and pronunced square pulse response is helpful for parameter estimation. This implies a readout duration that is sufficiently long enough for reaching a steady-state response. If the fit fails,consider to apply a gliding average with a window size that is not too coarse, this might help the fitting process.
 ## Working principle
 This class uses the input output relations to analyse the readout signal, if a square pulse is used. Thereby, the relevant experimental parameters can be estimated.
 The intra-cavity parameters such as the linewidth $\kappa$ and the dispersive shift $\chi$ can be experimentally obtained by the state-dependent resonator phase response. Similarly, these parameters can be found by analyzing the readout signal of a square pulse.
@@ -102,6 +103,7 @@ import opt_three_segment_final
 from opt_three_segment_final import three_seg
 ```
 ### Intitializing and executing the class
+For initailizing the class these parameters are required:
 |Parameter|Type|Description|
 |---------|----|-----------|
 |'T'|'float'|total pulse duration (µs)|
@@ -138,7 +140,9 @@ The optimized thrree-segment pulse paramteres are accessible through the class a
 ```python
     self.res
 ```
-
+### Mititgation of issues
+If the optimization fails or if the "otpimized" paramters are not as desired, the intitial three-segment pulse paramters can be adapted or the total pulse duration can be adjusted.
+Optimization will benefit, if experimental setup parameters such as the linewidth of the resonator $kappa/2pi$ and the dispersive shift $\xi/2\pi$ are extracted from measurements as precise as possible
 ### Documentation reference
 ```python
 help(opt_three_segment_final.three_seg)
