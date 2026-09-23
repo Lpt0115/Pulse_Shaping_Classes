@@ -66,7 +66,12 @@ plot_t_domain(self)
 2. Plots the real and imaginary part of the intra-cavity field over time  
 3. Plots the real and imaginary normalized measured readout data and the fitted output field to 
     the intra-cavity field model over time
-
+   
+### Parameter storage
+The extracted parameters can be accesed by the parameter dictionary attribute of the class 
+```python
+self.ro-dict
+```
 
 ### Documentation reference
 For detailed information on specific modules of the class the help() module can be used.
