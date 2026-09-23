@@ -136,6 +136,12 @@ Plotting of the optimized Three-Segment Pulse (normalized by sqrt(kappa)) over t
 ```
 Plotting of the intra-cavaity field trajectory for the qubit in $\ket{\rm{g}}$ and in $\ket{\rm{e}}$.
 
+```python
+    get_SNR_ratio(self.res,self.opt_square)
+```
+Plotting of the squared instantaneous state separation over time for the three-Segment Pulse compared to the instant state separation for the Square Pulse
+and plotting of the instantaneous mean photon number over time for the Three-Segment Pulse 
+and for the Square Pulse 
 ### Parameter storage
 The optimized thrree-segment pulse paramteres are accessible through the class attribute
 ```python
