@@ -142,7 +142,7 @@ The optimized thrree-segment pulse paramteres are accessible through the class a
 ```
 ### Mititgation of issues
 If the optimization fails or if the "otpimized" paramters are not as desired, the intitial three-segment pulse paramters can be adapted or the total pulse duration can be adjusted.
-Optimization will benefit, if experimental setup parameters such as the linewidth of the resonator $kappa/2pi$ and the dispersive shift $\xi/2\pi$ are extracted from measurements as precise as possible
+Optimization will benefit, if experimental setup parameters such as the linewidth of the resonator $\kappa/2\pi$ and the dispersive shift $\chi/2\pi$ are extracted from measurements as precise as possible
 ### Documentation reference
 ```python
 help(opt_three_segment_final.three_seg)
