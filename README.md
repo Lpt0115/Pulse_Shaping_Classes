@@ -70,7 +70,7 @@ plot_t_domain(self)
 ### Parameter storage
 The extracted parameters can be accesed by the parameter dictionary attribute of the class 
 ```python
-self.ro-dict
+self.ro_dict
 ```
 
 ### Documentation reference
