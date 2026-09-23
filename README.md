@@ -42,12 +42,7 @@ The folowing parameters are passed to the class for intitializing:
 ```python
 IQ_traj(x_data,i_data,q_data,n_cal)
 ```
-### Documentation reference
-For detailed information on specific modules of the class the help() module can be used.
-```python
-#For documentation use help()
-help(RO_class_5.IQ_traj)
-```
+
     
 
 ### Methods
@@ -70,7 +65,15 @@ plot_t_domain(self)
 1. Plots the normalized drive field over time
 2. Plots the real and imaginary part of the intra-cavity field over time  
 3. Plots the real and imaginary normalized measured readout data and the fitted output field to 
-    the intra-cavity field model over time  
+    the intra-cavity field model over time
+
+
+### Documentation reference
+For detailed information on specific modules of the class the help() module can be used.
+```python
+#For documentation use help()
+help(RO_class_5.IQ_traj)
+```
         
 ## Working principle
 This class uses the input output relations to analyse the readout signal, if a square pulse is used. Thereby, the relevant experimental parameters can be estimated.
