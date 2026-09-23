@@ -103,7 +103,7 @@ from opt_three_segment_final import three_seg
 |'kappa'|'float'| decay rate $\kappa$ of the resonator (1e6/s)|
 |'chi'|'float'|dispersive shift $\chi$ (1e6/s)|
 |'n_max'|'float'|Maximum mean photon number $\braket{\rm n}_{\rm max}$|
-|'three_seg_pulse_pars'|'np.ndarray'|Initial three-segment pulse parameters ($\sum_{i=1}{^3}{\Delta t_{i} \, a_{i}})$|
+|'three_seg_pulse_pars'|'np.ndarray'|Initial three-segment pulse parameters ($\sum_{i=1}^{3}{\Delta t_{i} \, a_{i}})$|
 ```python
 three_seg(T,kappa,chi,n_max,three_seg_pulse_pars)
 ````
