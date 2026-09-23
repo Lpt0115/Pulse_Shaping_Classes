@@ -80,7 +80,7 @@ For detailed information on specific modules of the class the help() module can 
 help(RO_class_5.IQ_traj)
 ```
 ### Mititgation of issues    
-Providing experimental readout data, that has a rather smooth and pronunced square pulse response is helpful for parameter estimation. This implies a readout duration that is sufficiently long enough for reaching a steady-state response. If the fit fails,consider to apply a moving average with a window size that is not too coarse, this might help the fitting process.
+Providing experimental readout data, that has a rather smooth and pronunced square pulse response is helpful for parameter estimation. This implies a readout duration that is sufficiently long enough for reaching a steady-state response. If the fit fails, consider to apply a moving average with a window size that is not too coarse, this might help the fitting process.
 ## Working principle
 This class uses the input output relations to analyse the readout signal, if a square pulse is used. Thereby, the relevant experimental parameters can be estimated.
 The intra-cavity parameters such as the linewidth $\kappa$ and the dispersive shift $\chi$ can be experimentally obtained by the state-dependent resonator phase response. Similarly, these parameters can be found by analyzing the readout signal of a square pulse.
