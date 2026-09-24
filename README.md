@@ -135,10 +135,15 @@ Plotting of the optimized Three-Segment Pulse (normalized by sqrt(kappa)) over t
     plot(self.res)
 ```
 Plotting of the intra-cavaity field trajectory for the qubit in $\ket{\rm{g}}$ and in $\ket{\rm{e}}$.
-
 ```python
     get_SNR_ratio(self.res,self.opt_square)
 ```
+#### Additional methods the class provides:
+```python
+    plot_out(self.res)
+```
+Plots the output field trajectory on the complex plane.
+Plots the output field over time
 Plotting of the squared instantaneous state separation over time for the three-Segment Pulse compared to the instant state separation for the Square Pulse
 and plotting of the instantaneous mean photon number over time for the Three-Segment Pulse 
 and for the Square Pulse 
