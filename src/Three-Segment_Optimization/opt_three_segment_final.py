@@ -406,22 +406,22 @@ class three_seg:
 
 
 
-        plt.plot(t,inst_n_mean_three_seg,label='Three-Segement')
-        plt.plot(t,inst_n_mean_square,label='Square')
-        plt.vlines(self.T,0,1e6,linestyle='dashed',color='green',label=fr'$\rm{{T}} = {self.T}\,\rm{{µs}}$')
-        plt.hlines(0.01523,0.1*args[0],T+.379,linestyle='dashed',color='brown',label=fr'Thermal population $\mathrm{{n}}_{{0}} = {0.0015}$')
-        plt.xlabel(r"t (µs)",fontsize=18)
-        plt.xlim(0.1*args[0],T*1.3)
-        plt.ylabel(r" $\left(| \alpha_{|\rm{g}\rangle}(t)|^{2} + |\alpha_{|\rm{e}\rangle}(t)|^{2}\right)/2 \ \left(\bar{\rm{n}}\right)$",fontsize=18)
-        plt.yscale('log')
-        plt.ylim(5e-3,max_inst_n_mean_three_seg*1.2)
-        plt.hlines(max_inst_n_mean_three_seg,0.,1.6*T,label=f'n_max <= {max_inst_n_mean_three_seg}'
-        ,linestyle='dashed')
-        plt.title(r"Instantaneous mean photon number",fontsize=18)
-        plt.legend(loc='best',bbox_to_anchor =(1.35,0.5),fontsize=18)
-        plt.grid(True,'major')
-        plt.tick_params(axis='both',which='major',labelsize=18)
-        plt.show()
+       # plt.plot(t,inst_n_mean_three_seg,label='Three-Segement')
+       # plt.plot(t,inst_n_mean_square,label='Square')
+       # plt.vlines(self.T,0,1e6,linestyle='dashed',color='green',label=fr'$\rm{{T}} = {self.T}\,\rm{{µs}}$')
+       # plt.hlines(0.01523,0.1*args[0],T+.379,linestyle='dashed',color='brown',label=fr'Thermal population $\mathrm{{n}}_{{0}} = {0.0015}$')
+       # plt.xlabel(r"t (µs)",fontsize=18)
+       # plt.xlim(0.1*args[0],T*1.3)
+       # plt.ylabel(r" $\left(| \alpha_{|\rm{g}\rangle}(t)|^{2} + |\alpha_{|\rm{e}\rangle}(t)|^{2}\right)/2 \ \left(\bar{\rm{n}}\right)$",fontsize=18)
+       # plt.yscale('log')
+       # plt.ylim(5e-3,max_inst_n_mean_three_seg*1.2)
+       # plt.hlines(max_inst_n_mean_three_seg,0.,1.6*T,label=f'n_max <= {max_inst_n_mean_three_seg}'
+       # ,linestyle='dashed')
+       # plt.title(r"Instantaneous mean photon number",fontsize=18)
+       # plt.legend(loc='best',bbox_to_anchor =(1.,0.5),fontsize=18)
+       # plt.grid(True,'major')
+       # plt.tick_params(axis='both',which='major',labelsize=18)
+       # plt.show()
 
 
 
@@ -599,6 +599,32 @@ class three_seg:
         
         t,ag,ae = self.cav_sol(pars)
         t2,ag2,ae2 = self.cav_sol(self.opt_square)
+
+        plt.figure(figsize=(3.,3.))
+        plt.plot(self.cav_sol(np.asarray(pars))[1].real,self.cav_sol(np.asarray(pars))[1].imag,label=r"$|\rm{g}\rangle$",color='b')
+        plt.plot(self.cav_sol(np.asarray(self.opt_square))[1].real,self.cav_sol(np.asarray(self.opt_square))[1].imag,linestyle='dashed',color='b')
+        plt.plot(self.cav_sol(np.asarray(pars))[2].real,self.cav_sol(np.asarray(pars))[2].imag,label=r"$|\rm{e}\rangle$",color='r')
+        plt.plot(self.cav_sol(np.asarray(self.opt_square))[2].real,self.cav_sol(np.asarray(self.opt_square))[2].imag,linestyle='dashed',color='r')
+
+        plt.xlabel(r"$\mathrm{Re}\left(\alpha\right)$",fontsize=18)
+        plt.ylabel(r"$\mathrm{Im}\left(\alpha\right)$",fontsize=18)
+        plt.legend(fontsize=18)
+        plt.grid(True,'major')
+        plt.title(r"Intra-Cavity Field $\alpha$" +"\n" + "Phase Space Representation",fontsize=18)
+        plt.tick_params(axis='both',which='major',labelsize=18)
+        plt.rcParams['lines.linewidth'] =3.0
+        plt.savefig('Plot_graphics/_three_seg_alpha_IQ.svg',bbox_inches='tight')
+        plt.show()
+        discr_n3 = self.get_idx_T(t,(self.T-(self.res[0]+self.res[1])))
+        n_last = abs(ag[discr_n3])
+        print(f"Instant photon number after third pulse {n_last}",flush=True)
+        return n_last
+        
+        
+    def plot_out(self,pars):
+        
+        t,ag,ae = self.cav_sol(pars)
+        t2,ag2,ae2 = self.cav_sol(self.opt_square)
         out_g = (ag - self.three_segments(t,pars)/self.kappa)
         out_e = (ae -self.three_segments(t,pars)/self.kappa)
         out_g_sq = (ag2 - self.square_pulse(t,self.opt_square)/self.kappa)
@@ -626,27 +652,18 @@ class three_seg:
         plt.legend()
         plt.grid(True,'major')
         plt.title(r"Output field $\rm{a}_{\rm{out}}(t)$ on IQ plane")
-        plt.show()
-       
-        plt.figure(figsize=(3.,3.))
-        plt.plot(self.cav_sol(np.asarray(pars))[1].real,self.cav_sol(np.asarray(pars))[1].imag,label=r"$|\rm{g}\rangle$",color='b')
-        plt.plot(self.cav_sol(np.asarray(self.opt_square))[1].real,self.cav_sol(np.asarray(self.opt_square))[1].imag,linestyle='dashed',color='b')
-        plt.plot(self.cav_sol(np.asarray(pars))[2].real,self.cav_sol(np.asarray(pars))[2].imag,label=r"$|\rm{e}\rangle$",color='r')
-        plt.plot(self.cav_sol(np.asarray(self.opt_square))[2].real,self.cav_sol(np.asarray(self.opt_square))[2].imag,linestyle='dashed',color='r')
-
-        plt.xlabel(r"$\mathrm{Re}\left(\alpha\right)$",fontsize=18)
-        plt.ylabel(r"$\mathrm{Im}\left(\alpha\right)$",fontsize=18)
-        plt.legend(fontsize=18)
-        plt.grid(True,'major')
-        plt.title(r"Intra-Cavity Field $\alpha$" +"\n" + "Phase Space Representation",fontsize=18)
-        plt.tick_params(axis='both',which='major',labelsize=18)
-        plt.rcParams['lines.linewidth'] =3.0
-        plt.savefig('Plot_graphics/_three_seg_alpha_IQ.svg',bbox_inches='tight')
-        plt.show()
-        discr_n3 = self.get_idx_T(t,(self.T-(self.res[0]+self.res[1])))
-        n_last = abs(ag[discr_n3])
-        print(f"Instant photon number after third pulse {n_last}",flush=True)
-        return n_last
+        plt.show()    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     def __init__(self,T_p,kappa,chi,n_max,initial_guess):          #initializing,total pulse length,kappa,detuning,photon_number_callibration value 
         """
         Parameters
