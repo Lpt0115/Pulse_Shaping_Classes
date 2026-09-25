@@ -258,19 +258,16 @@ class three_seg:
             complex Intra-cavity field solution for |e> 
         """
         a0=[0.0,0.0] # initial condition of alpha : alpha_(i,j)(t=0) =0+0i
-        #dt_new = np.concatenate([dt[:2],[self.T-(dt[0]+dt[1])],dt[2:]])
-        #print(dt_new)
         cav_g = solve_ivp(self.diffae,self.t_span,a0,t_eval =self.t_evaluate ,args=(dt,))
         cav_e = solve_ivp(self.diffaem,self.t_span,a0,t_eval =self.t_evaluate ,args=(dt,))
         alpha_g = cav_g.y[0]+1j*cav_g.y[1]
         alpha_e = cav_e.y[0]+1j*cav_e.y[1]
         return cav_g.t, alpha_g, alpha_e
-    # fnding the index for t=T (T is just a time) !! I chose bad variable name !!
+
     
     def get_idx_T(self,t,T):
-        #return np.argmin(np.abs(t-T))
+        #Finding the index for t=T (T is just a time)
         return np.searchsorted(t, T, side='left')
-    #computing the time decrement delta t for numerical integration over time intervall (t_i,t_f)
     
     
     def snr_ratio(self,dt): 
@@ -287,8 +284,7 @@ class three_seg:
         R: float
             Integrated state separation ratio ([Int. state sep. for t in (T,t_cutoff)] / [Int. state sep. for t in (0,T)])
         """
-        #dt = np
-        #dt_new = np.concatenate([dt[:2],[self.T-(dt[0]+dt[1])],dt[2:]])
+        #Formulating the cost function with the functions defined above  
         T = self.T
         kappa = self.kappa
         cutoff_des = self.cutoff_des
@@ -298,16 +294,10 @@ class three_seg:
         det = (t[1]-t[0])
         det2 = det 
         SNR_rungup = (np.sum(np.abs(a_g[:discr]-a_e[:discr])**(2)*det)) #Int. SNR from 0 to T
-        
         SNR_afterT = (np.sum(np.abs(a_g[discr:cutoff]-a_e[discr:cutoff])**(2)*det2))
-        #R =(SNR_afterT/SNR_rungup)*np.sqrt(len(t[:discr])/len(t[discr:cutoff]))+.001*((np.abs(a_g[discr])**(2)+np.abs(a_e[discr])**(2))/2)
         
-        
-        
-        
-        R =(SNR_afterT/(SNR_rungup))#+.0*(np.abs(a_g[discr]-a_e[discr])**(2)))
-        return R
-    #formulating the cost function with the functions defined above    
+        R =(SNR_afterT/(SNR_rungup))
+        return R   
 
     
   
@@ -318,8 +308,6 @@ class three_seg:
         
         
     def get_n_int(self,dt,tf):
-        #dt_new = np.concatenate([dt[:2],[self.T-(dt[0]+dt[1])],dt[2:]])
-       
         T = tf
         t, ag, ae = self.cav_sol(dt)
         discr =self.get_idx_T(t,T)
@@ -331,15 +319,7 @@ class three_seg:
         
         
     def n_eq(self,params,tf,n_tot):
-        #dt_new = np.concatenate([params[:2],[self.T-(params[0]+params[1])],params[2:]])
-       # def get_n_int(self,dt):
-        #    T = self.T
-        #    t, ag, ae = self.cav_sol(dt)
-         #   discr =self.get_idx_T(t,T)
-          #  Dt = (t[1]-t[0])
-          #  n_int = self.kappa*np.sum((np.abs(ag[:discr])**(2)+np.abs(ae[:discr])**(2))/2)*Dt
-          #  return n_int
-            
+         
         def residual(params):
             n_int = self.get_n_int(params,tf)
             return (n_tot-n_int)**(2)
@@ -390,18 +370,17 @@ class three_seg:
 
         plt.plot(t,inst_state_sep_three_seg,label='Three-Segment',color=(254/255,178/255,76/255))
         plt.plot(t,inst_state_sep_square,label='Square',color='black')
-        #plt.plot(t[discr2:],np.abs(a_g2[discr2]-a_e2[discr2])**(2)*np.exp(-kappa*(t[discr2:]-self.T)),linestyle='dashed',label='exp. decay',color='black')
         plt.vlines(self.T,0,1e6,linestyle='dashed',color='green',label=fr'$\rm{{T}} = {self.T}\,\rm{{µs}}$')
         plt.xlabel("t (µs)",fontsize=18)
         plt.xlim(0.*T,T*1.5)
         plt.ylabel(r" $|\alpha_{|\rm{g}\rangle}(t) - \alpha_{|\rm{e}\rangle}(t) |^{2} \ \left(\bar{\rm{n}}\right)$",fontsize =18)
         plt.yscale('log')
-        plt.ylim(2e-3,1e1)
+        plt.ylim(2e-3,max(inst_state_sep_square)*1.1)
         plt.title(r"Instantaneous State Separation",fontsize=18)
         plt.legend()
         plt.grid(True,'major')
         plt.tick_params(axis='both',which='major',labelsize=18)
-        #plt.savefig("Plot_graphics/four_seg_state_sep_opt_IQ_HQCuing",dpi=300)
+        #plt.savefig("datafolder/imagename.svg",dpi=300)
         plt.show()
 
 
@@ -490,8 +469,6 @@ class three_seg:
             return (n_c**(20))**(1/20) 
         #print(cons2(dt))
         def cons3(dt):
-            #return (np.min(np.abs(dt[3:])))
-            #dt_new = np.concatenate([dt[:2],[(self.T-(dt[0]+dt[1]))],dt[2:]])
             dt_new = self._pass_initials(dt)
             T = self.T
             kappa = self.kappa
@@ -531,8 +508,6 @@ class three_seg:
         self.time_seg = (result.x[:3]/T)
         #print(f"Time segment: {self.time_seg}")
         maxamp = np.max(result.x[3:])
-        #discr =self.get_idx_T(self.t,T)
-        #n_t = np.sum((np.abs(a_g)**(2)+np.abs(a_e)**(2))/2.)*(t[1]-t[0])
         self.amp_n_est = np.sqrt(n_tot/2200)
         self.amp_seg_max =np.max(np.abs(result.x[3:]))
         self.amp_seg = (result.x[3:]/np.max(np.abs(result.x[3:])))
@@ -540,59 +515,22 @@ class three_seg:
         return result.x
 
 
-       
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-  #  def callback(self,dt,state=None):
-  #      if np.sum(dt[:3]) < .9*self.T:
-   #         print("Total pulse length too short!")
-   #         return True
-   #     return False
-   #     if (np.min(dt[:3]) > (0.02)):
-      #      print("Minimum pulse length exceeded!")
-   #         return True
-  #      return False
-
-   
+      
 
    
     def plot_pulse(self):
         plt.figure(figsize=(4.5,3.5))
-        #plt.plot(self.t_evaluate,self.square_pulse(self.t_evaluate,self.opt_square)/self.kappa,label="Square",color='black',linestyle='dashed')
+        
         plt.plot(self.t_evaluate,self.three_segments(self.t_evaluate,self.res)/self.kappa,color='teal')
-       # plt.vlines(self.T,1.5*np.min(self.res[3:]/self.kappa),1.1*max(self.res[3:]/self.kappa),linestyle='dashed',color= 'darkorange',label = f"T = {self.T} µs ")
         plt.xlim(0.0,self.T*1.1)
         plt.ylim(1.4*np.min(self.res[3:]/self.kappa),1.1*max(self.res[3:]/self.kappa))
-        #plt.legend(fontsize=18)
         plt.grid(True,'major')
         plt.xlabel("t (µs)", fontsize=18)
         plt.ylabel(r"$\rm a_{\rm in}/ \sqrt{\kappa}$",fontsize=18)
-        #plt.title(r"Three-Segment Pulse",fontsize=18)
         plt.tick_params(axis='both',which='major',labelsize=18)
         plt.rcParams['lines.linewidth'] =3.0
-        plt.savefig("Plot_graphics/_Three_seg_pulse.svg",bbox_inches='tight')
+        #plt.savefig("datafolder/_Three_seg_pulse.svg",bbox_inches='tight')
         plt.show()
-        #N= len(self.t_evaluate)
-        #spec_pulse = np.fft.fft(self.three_segments(self.t_evaluate,self.res))
-        #freq_pulse = np.fft.fftfreq(N,(self.t_evaluate[1]-self.t_evaluate[0]))
-        #mask = freq_pulse >=0
-        #plt.plot(freq_pulse,abs(spec_pulse)*(1/N))
-        #plt.xlabel("f (MHz)")
-        #plt.ylabel(r"FFT($\mathrm{a}_{\mathrm{in}}$)")
-        #plt.xlim(-15,15)
-        #plt.show()
 
         
     def plot(self,pars):
