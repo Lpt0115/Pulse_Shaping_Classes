@@ -395,7 +395,7 @@ class four_seg:
         plt.legend()
         plt.grid(True,'major')
         plt.tick_params(axis='both',which='major',labelsize=18)
-        #plt.savefig("Plot_graphics/four_seg_state_sep_opt_IQ_HQCuing",dpi=300)
+        #plt.savefig("Plot_graphics/four_seg_state_sep_opt_IQ",dpi=300)
         plt.show()
 
 
@@ -560,7 +560,7 @@ class four_seg:
         #plt.title(r"Four segment pulse and square pulse",fontsize=18)
         plt.tick_params(axis='both',which='major',labelsize=18)
         plt.rcParams['lines.linewidth'] =3.0
-        #plt.savefig("Plot_graphics/_four_seg_pulse_opt_IQ_HQCuing.svg",bbox_inches='tight')
+        #plt.savefig("Plot_graphics/_four_seg_pulse_opt_IQ.svg",bbox_inches='tight')
         plt.show()
         """
         N= len(self.t_evaluate)
