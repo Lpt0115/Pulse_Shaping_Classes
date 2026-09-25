@@ -98,9 +98,7 @@ This class estimates optimal pulse parameters for a qubit readout using a Three-
 ### Importing the class
 -------------------------
 ```python
-#Assuming opt_three_segment_final is the working directory
-import opt_three_segment_final
-from opt_three_segment_final import three_seg
+from Pulse_Shaping_Classes.src.Three_Segment_Optimization import opt_three_segment_final
 ```
 ### Intitializing and executing the class
 For initailizing the class these parameters are required:
