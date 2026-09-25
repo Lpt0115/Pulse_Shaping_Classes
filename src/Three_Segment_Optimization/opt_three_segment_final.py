@@ -354,16 +354,10 @@ class three_seg:
         def _inst_state_sep(g,e):
             sep = np.abs(g-e)**(2)
             return sep
-        def _inst_n_mean(g,e):
-            n_m = ((np.abs(g)**(2)+np.abs(e)**(2))/2)
-            return n_m
             
             
         inst_state_sep_three_seg = _inst_state_sep(a_g,a_e)
         inst_state_sep_square = _inst_state_sep(a_g2,a_e2)
-        inst_n_mean_three_seg = _inst_n_mean(a_g,a_e)
-        inst_n_mean_square = _inst_n_mean(a_g2,a_e2)
-        max_inst_n_mean_three_seg = np.max((np.abs(a_g)**(2)+np.abs(a_e)**(2))/2)
         
         
         
@@ -383,24 +377,63 @@ class three_seg:
         #plt.savefig("datafolder/imagename.svg",dpi=300)
         plt.show()
 
+        SNR_rungup = np.sqrt(2*kappa*np.sum(np.abs(a_g[:discr]-a_e[:discr])**(2)*det/len(t[:discr])))
+        SNR_afterT = np.sqrt(2*kappa*np.sum(np.abs(a_g[discr:cutoff]-a_e[discr:cutoff])**(2)*det))
+        SNR_rungup2 = np.sqrt(2*kappa*np.sum(np.abs(a_g2[:discr2]-a_e2[:discr2])**(2)*det/len(t[discr2:])))
+        SNR_afterT2 = np.sqrt(2*kappa*np.sum(np.abs(a_g2[discr2:cutoff]-a_e2[discr2:cutoff])**(2)*det))
+        SNR_ratio = (SNR_afterT/SNR_rungup)
+        SNR_ratio2 = (SNR_afterT2/SNR_rungup2)
+        imp = SNR_ratio2/SNR_ratio #improvement factor
 
+        #print("Int. SNR from 0 to T three-segment:",SNR_rungup)
+        #print("Int. SNR from 0 to T square:",SNR_rungup2)
+        #print("Int. SNR/n_res from 0 to T three-segment:",SNR_rungup/n_res)
+        #print("Int. SNR/n_res from 0 to T square:",SNR_rungup2/n_res2)
+        #print("Int. SNR from T to cutoff three segmenself:",SNR_afterT)
+        #print("Int. SNR from T to cutoff square:",SNR_afterT2)
+        print("SNR ratio three-segment:",SNR_ratio)
+        print("SNR ratio square:",SNR_ratio2)
+        print(f"Improvement by : {20*np.log10(imp)} dB")
+        
 
-       # plt.plot(t,inst_n_mean_three_seg,label='Three-Segement')
-       # plt.plot(t,inst_n_mean_square,label='Square')
-       # plt.vlines(self.T,0,1e6,linestyle='dashed',color='green',label=fr'$\rm{{T}} = {self.T}\,\rm{{µs}}$')
-       # plt.hlines(0.01523,0.1*args[0],T+.379,linestyle='dashed',color='brown',label=fr'Thermal population $\mathrm{{n}}_{{0}} = {0.0015}$')
-       # plt.xlabel(r"t (µs)",fontsize=18)
-       # plt.xlim(0.1*args[0],T*1.3)
-       # plt.ylabel(r" $\left(| \alpha_{|\rm{g}\rangle}(t)|^{2} + |\alpha_{|\rm{e}\rangle}(t)|^{2}\right)/2 \ \left(\bar{\rm{n}}\right)$",fontsize=18)
-       # plt.yscale('log')
-       # plt.ylim(5e-3,max_inst_n_mean_three_seg*1.2)
-       # plt.hlines(max_inst_n_mean_three_seg,0.,1.6*T,label=f'n_max <= {max_inst_n_mean_three_seg}'
-       # ,linestyle='dashed')
-       # plt.title(r"Instantaneous mean photon number",fontsize=18)
-       # plt.legend(loc='best',bbox_to_anchor =(1.,0.5),fontsize=18)
-       # plt.grid(True,'major')
-       # plt.tick_params(axis='both',which='major',labelsize=18)
-       # plt.show()
+    def get_n_t(self,args,args2):
+        """
+        Plotting of the instantaneous mean photon number over time for the Three-Segment Pulse (args) 
+        compared to the instant state separation for the Square Pulse(args2)
+        """
+        kappa = self.kappa
+        T = self.T
+        t, a_g, a_e = self.cav_sol(args)
+        t, a_g2, a_e2 = self.cav_sol(args2)
+        discr =self.get_idx_T(t,T)
+        discr2 = self.get_idx_T(t,(args[0]+args[1]))
+        cutoff = self.get_idx_T(t,self.cutoff_des)
+        det = (t[1]-t[0])
+        
+        def _inst_n_mean(g,e):
+            n_m = ((np.abs(g)**(2)+np.abs(e)**(2))/2)
+            return n_m
+            
+        inst_n_mean_three_seg = _inst_n_mean(a_g,a_e)
+        inst_n_mean_square = _inst_n_mean(a_g2,a_e2)
+        max_inst_n_mean_three_seg = np.max((np.abs(a_g)**(2)+np.abs(a_e)**(2))/2)
+       
+        plt.plot(t,inst_n_mean_three_seg,label='Three-Segement')
+        plt.plot(t,inst_n_mean_square,label='Square')
+        plt.vlines(self.T,0,1e6,linestyle='dashed',color='green',label=fr'$\rm{{T}} = {self.T}\,\rm{{µs}}$')
+        plt.hlines(0.01523,0.1*args[0],T+.379,linestyle='dashed',color='brown',label=fr'Thermal population $\mathrm{{n}}_{{0}} = {0.0015}$')
+        plt.xlabel(r"t (µs)",fontsize=18)
+        plt.xlim(0.1*args[0],T*1.3)
+        plt.ylabel(r" $\left(| \alpha_{|\rm{g}\rangle}(t)|^{2} + |\alpha_{|\rm{e}\rangle}(t)|^{2}\right)/2 \ \left(\bar{\rm{n}}\right)$",fontsize=18)
+        plt.yscale('log')
+        plt.ylim(5e-3,max_inst_n_mean_three_seg*1.2)
+        plt.hlines(max_inst_n_mean_three_seg,0.,1.6*T,label=f'n_max <= {max_inst_n_mean_three_seg}'
+        ,linestyle='dashed')
+        plt.title(r"Instantaneous mean photon number",fontsize=18)
+        plt.legend(loc='best',bbox_to_anchor =(1.,0.5),fontsize=18)
+        plt.grid(True,'major')
+        plt.tick_params(axis='both',which='major',labelsize=18)
+        plt.show()
 
 
 
@@ -413,29 +446,7 @@ class three_seg:
         print(f"n_int pulse_square = {n_t2}")
         print(f"n residual_three_seg = {n_res}")
         print(f"n_int residual_square = {n_res2}")
-        SNR_rungup = np.sqrt(2*kappa*np.sum(np.abs(a_g[:discr]-a_e[:discr])**(2)*det/len(t[:discr])))
-        SNR_afterT = np.sqrt(2*kappa*np.sum(np.abs(a_g[discr:cutoff]-a_e[discr:cutoff])**(2)*det))
-        SNR_rungup2 = np.sqrt(2*kappa*np.sum(np.abs(a_g2[:discr2]-a_e2[:discr2])**(2)*det/len(t[discr2:])))
-        SNR_afterT2 = np.sqrt(2*kappa*np.sum(np.abs(a_g2[discr2:cutoff]-a_e2[discr2:cutoff])**(2)*det))
-        SNR_ratio = (SNR_afterT/SNR_rungup)
-        SNR_ratio2 = (SNR_afterT2/SNR_rungup2)
-        imp = SNR_ratio2/SNR_ratio #improvement factor
-
-        print("Int. SNR from 0 to T three-segment:",SNR_rungup)
-        print("Int. SNR from 0 to T square:",SNR_rungup2)
-        #print("Int. SNR/n_res from 0 to T three-segment:",SNR_rungup/n_res)
-        #print("Int. SNR/n_res from 0 to T square:",SNR_rungup2/n_res2)
-        #print("Int. SNR from T to cutoff three segmenself:",SNR_afterT)
-        #print("Int. SNR from T to cutoff square:",SNR_afterT2)
-        print("SNR ratio three-segment:",SNR_ratio)
-        print("SNR ratio square:",SNR_ratio2)
-        #print("Improvementby factor of:",imp)
-        #print(f"Improvement by : {20*np.log10(imp)} dB")
         print(f" Residual photon number  {(n_res/n_res2)*100:.6f} % of residual photons of a square pulse ")
-        
-
-
-        
         
 
 
@@ -447,27 +458,24 @@ class three_seg:
         The scipy module optimize.minimize is used with the method 'Powell'
         """
         T =self.T
-        #guessed = dt
+
         
         def cost(dt):
             dt_new = np.concatenate([dt[:2],[(self.T-(dt[0]+dt[1]))],dt[2:]])
             dt_new = self._pass_initials(dt)
-            #print(dt_new)
             return self.snr_ratio(dt_new)        
     
         
 
         def cons2(dt): #max instant mean photon number bounded to n_max (see above)
-            #n_t = self.get_n_int(dt,T)
-            #dt_new = np.concatenate([dt[:2],[(self.T-(dt[0]+dt[1]))],dt[2:]])
             dt_new = self._pass_initials(dt)
             t, ag, ae = self.cav_sol(dt_new)
             discr =self.get_idx_T(t,T)
             Dt = (t[1]-t[0])
             n_c = np.max((np.abs(ag)**(2)+np.abs(ae)**(2))/2.)
-            #print(n_c)
+   
             return (n_c**(20))**(1/20) 
-        #print(cons2(dt))
+    
         def cons3(dt):
             dt_new = self._pass_initials(dt)
             T = self.T
@@ -490,9 +498,9 @@ class three_seg:
         dopt = self.guessed.copy()
         print(dopt)
         lim = [((0.004/self.T),1.),((.004/self.T),1),(-100,100),(-100,100),(-100,100)] 
-        result = sc.optimize.minimize(cost,dopt,method='Powell',constraints = constraints,options={'disp':True})
+        result = sc.optimize.minimize(cost,dopt,method='Powell',constraints = constraints,options={'disp':False})
         result.success
-        print(result)
+    
                 
         
 
@@ -501,16 +509,14 @@ class three_seg:
         result.x = self._pass_initials(result.x)
         n_tot = self.get_n_int(result.x,T)
         opt_square = np.concatenate([[result.x[0]],[result.x[3]]])
-        #self.get_SNR_ratio(result.x,opt_square)
         self.opt_square = opt_square
         self.result_opt = result.x
-        print(f"Time segmenself: {(result.x[:3]/T)}")
         self.time_seg = (result.x[:3]/T)
-        #print(f"Time segment: {self.time_seg}")
+        print(f"Time segment: {self.time_seg}")
         maxamp = np.max(result.x[3:])
         self.amp_n_est = np.sqrt(n_tot/2200)
         self.amp_seg_max =np.max(np.abs(result.x[3:]))
-        self.amp_seg = (result.x[3:]/np.max(np.abs(result.x[3:])))
+        self.amp_seg = (result.x[3:]/result.x[3])#np.max(np.abs(result.x[3:])))
         print(f"amp segments: {self.amp_seg}")
         return result.x
 
@@ -640,17 +646,6 @@ class three_seg:
        
         T = self.T
         
-        #self.amps3 = np.array([.9,-.6,.7])#*(self.n_p*np.sqrt((self.kappa/2.)**(2)+self.chi**(2)))
-        #self.amps3=np.array([.5,-.855,1.965])*(self.n_p*np.sqrt((self.kappa/2.)**(2)+self.chi**(2)))
-        #t1 = 0.9
-        #t2=0.0925
-        #t3 = (1.0 -(t1+t2))
-        #t1 = 0.8
-        #t2=0.09
-        #t3 = (1.0 -(t1+t2))
-        #self.time3 = np.array([t1,t2,t3])*self.T
-        #square_cal_12_n_max = np.sqrt(1/0.00025274846919582386)#*np.sqrt(12/12.92)*np.sqrt(12/11.842888975258724)
-        #self.guessed = np.append(self.time3[:-1],self.amps3)#*(square_cal_12_n_max/np.sqrt(self.kappa)))
         self.guessed = self._initial_rel(self.initial_guess)
        
         #n= self.n_p # max instant mean photon number
