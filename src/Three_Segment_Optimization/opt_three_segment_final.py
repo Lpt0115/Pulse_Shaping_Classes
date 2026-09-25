@@ -551,7 +551,7 @@ class three_seg:
         plt.title(r"Intra-Cavity Field $\alpha$" +"\n" + "Phase Space Representation",fontsize=18)
         plt.tick_params(axis='both',which='major',labelsize=18)
         plt.rcParams['lines.linewidth'] =3.0
-        plt.savefig('Plot_graphics/_three_seg_alpha_IQ.svg',bbox_inches='tight')
+        #plt.savefig('datafolder/_three_seg_alpha_IQ.svg',bbox_inches='tight')
         plt.show()
         discr_n3 = self.get_idx_T(t,(self.T-(self.res[0]+self.res[1])))
         n_last = abs(ag[discr_n3])
