@@ -17,7 +17,7 @@ Before starting with pulse shaping, it is essential to know the sepcific paramet
 A square pulse readout analysis class was written for parameter extraction of time domain readout signals that is as a prerequisite for pulse shaping.
 
 Square pulse for superconducting qubit readout comes at cost of a rather slow decay of the readout signal after the information about the qubit state is obtained.
-For a more optimized readout a method of adding square pulses was used. This method aims for a signal suppression after the state of the qubit has already been obtained.
+For a more optimized readout a method of adding square pulses was used [^1] [^2]. This method aims for a signal suppression after the state of the qubit has already been obtained.
 
 
 # Square pulse analysis class
@@ -91,6 +91,8 @@ With the help of a function method, makes a rough estimate of readout parameters
 </p>
 Applying this analysis class to both qubit state-dependent readout signal, the difference in detuning gives the frequency shift between the two responses of the resonator which is linked to the coupling to the qubit.
 
+[^1] McClure et al., 
+[^2] Hazra et al., 2024
 # Three-Segment Optimization Class
 This class estimates optimal pulse parameters for a qubit readout using a Three-segment pulse with total pulse duration T for a specific readout setup, characterized by the linewidth of the readout resonator $\kappa/2\pi$ and the dispersive shift $\chi/2\pi$ of the resonance frequency of the resonator dependent on the qubit state either in $\ket{\rm g}$ or in $\ket{\rm e}$. The drive amplitude is capped to a specific maximum mean photon number $\braket{\rm n}_{\rm max}$ induced by the Three-segment pulse.
 ## Usage
