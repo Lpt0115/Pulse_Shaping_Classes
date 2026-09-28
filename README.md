@@ -139,8 +139,12 @@ Plotting of the intra-cavaity field trajectory for the qubit in $\ket{\rm{g}}$ a
     get_SNR_ratio(self.res,self.opt_square)
 ```
 1. Plots the squared instantaneous state separation over time for the three-Segment Pulse compared to the instant state separation for the Square Pulse
-2. plots the instantaneous mean photon number over time for the Three-segment Pulse and the SQuare pulse.
 #### Additional methods the class provides:
+
+```python
+    self.get_n_t(self.res,self.opt_square)
+```
+Plots the instantaneous mean photon number over time for the three-segment Pulse and the square pulse.
 ```python
     plot_out(self.res)
 ```
