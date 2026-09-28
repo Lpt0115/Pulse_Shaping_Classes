@@ -338,8 +338,6 @@ class three_seg:
         """
         Plotting of the squared instantaneous state separation over time for the Three-Segment Pulse (args) 
         compared to the instant state separation for the Square Pulse(args2)
-        and plotting of the instantaneous mean photon number over time for the Three-Segment Pulse 
-        and for the Square Pulse 
         """
         kappa = self.kappa
         T = self.T
