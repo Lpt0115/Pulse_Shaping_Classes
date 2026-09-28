@@ -1,5 +1,5 @@
 # Introduction
-These classes are written for the master's thesis project "Pulse Shaping for optimal superconducting qubit readout", Philipp Thamm at Karlsruhe Institut for Thehnology (KIT), 2026.
+These classes are written for the master's thesis project "Pulse Shaping for Optimal Superconducting Qubit Readout", Philipp Thamm at Karlsruhe Institut for Thehnology (KIT), 2026.
 
 As the name implies, this project is embedded in the research field of quantum computing and deals with a physics motivated engineering task.
 Without going further into the details for readers with less physical background, a brief motivation will be outlined:
