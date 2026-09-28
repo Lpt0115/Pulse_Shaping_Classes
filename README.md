@@ -175,4 +175,4 @@ Using the integrated sate separation ratio as a cost function, the optimal pulse
   <img src="images/Three_Segment_Class_workflow.png" width="500">
 </p>
 
-
+The four-segment class uses the same working prinicple and is used analogous to the three-segment class.
