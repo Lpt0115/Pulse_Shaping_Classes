@@ -94,7 +94,7 @@ Applying this analysis class to both qubit state-dependent readout signal, the d
 [^1]: McClure et al., Physcial Review Letter Applied 5,2016.
 [^2]: Hazra et al., Physcial Review Letters 134, 2025.
 # Three-Segment Optimization Class
-This class estimates optimal pulse parameters for a qubit readout using a Three-segment pulse with total pulse duration T for a specific readout setup, characterized by the linewidth of the readout resonator $\kappa/2\pi$ and the dispersive shift $\chi/2\pi$ of the resonance frequency of the resonator dependent on the qubit state either in $\ket{\rm g}$ or in $\ket{\rm e}$. The drive amplitude is capped to a specific maximum mean photon number $\braket{\rm n}_{\rm max}$ induced by the Three-segment pulse.
+This class estimates optimal pulse parameters for a qubit readout using a Three-segment pulse with total pulse duration T for a specific readout setup, characterized by the linewidth of the readout resonator $\kappa/2\pi$ and the dispersive shift $\chi/2\pi$ of the resonance frequency of the resonator dependent on the qubit state either in $\ket{\rm g}$ or in $\ket{\rm e}$. The drive amplitude is capped to a specific maximum mean photon number $\braket{\rm n}_{\rm max}$ induced by the three-segment pulse.
 ## Usage
 ----------
 ### Importing the class
