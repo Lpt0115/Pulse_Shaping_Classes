@@ -494,7 +494,7 @@ class three_seg:
  
         constraints = [NonlinearConstraint(cons2,self.n_p*0.99,self.n_p)]
         dopt = self.guessed.copy()
-        print(dopt)
+        #print(dopt)
         lim = [((0.004/self.T),1.),((.004/self.T),1),(-100,100),(-100,100),(-100,100)] 
         result = sc.optimize.minimize(cost,dopt,method='Powell',constraints = constraints,options={'disp':False})
         result.success
@@ -643,7 +643,8 @@ class three_seg:
         self.t_evaluate = np.linspace(*self.t_span,100000)
        
         T = self.T
-        
+        amp_conv = np.sqrt(self.n_p)*np.sqrt((self.kappa/2.)**(2)+self.chi**(2))
+        self.initial_guess[3:]= self.initial_guess[3:]*amp_conv
         self.guessed = self._initial_rel(self.initial_guess)
        
         #n= self.n_p # max instant mean photon number
