@@ -138,20 +138,20 @@ Plotting of the intra-cavaity field trajectory for the qubit in $\ket{\rm{g}}$ a
 ```python
     get_SNR_ratio(self.res,self.opt_square)
 ```
-1. Plots the squared instantaneous state separation over time for the three-Segment Pulse compared to the instant state separation for the Square Pulse
+Plots the squared instantaneous state separation over time for the three-segment pulse compared to the instant state separation for the square pulse
 #### Additional methods the class provides:
 
 ```python
     self.get_n_t(self.res,self.opt_square)
 ```
-Plots the instantaneous mean photon number over time for the three-segment Pulse and the square pulse.
+Plots the instantaneous mean photon number over time for the three-segment pulse and the square pulse.
 ```python
     plot_out(self.res)
 ```
 1. Plots the output field trajectory on the complex plane.
 2. Plots the output field over time
 ### Parameter storage
-The optimized thrree-segment pulse paramteres are accessible through the class attribute
+The optimized three-segment pulse paramteres are accessible through the class attribute
 ```python
     self.res
 ```
@@ -164,7 +164,8 @@ help(opt_three_segment_final.three_seg)
 ```
 
 ## Working principle
-The optimization class uses the readout duration $T$, the resonator linewidth $\kappa$, the dispersive shift $\chi$, the maximum mean photon number $\rm n_{\mathrm{max}}$ and the  initial Three-segment pulse parameters ($\Delta t_{i} \, a_{i}$) for initialization and execution of the class.
+The optimization class uses the readout duration $T$, the resonator linewidth $\kappa$, the dispersive shift $\chi$, the maximum mean photon number $\rm n_{\mathrm{max}}$ and the  initial 
+three-segment pulse parameters ($\Delta t_{i} \, a_{i}$) for initialization and execution of the class.
 
 Inside the class, from the initial only the free pulse parameters are passed to the python module <bf>scipy.optimize.minimize()</bf>
 
