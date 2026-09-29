@@ -50,7 +50,7 @@ IQ_traj(x_data,i_data,q_data,n_cal)
 -------  
 
 ```python
-    plot(self)
+   RO_class_5.IQ_traj.plot()
 ```
 1. Displays the drive amplitude, the decay rate kappa, and the detuning in MHz
 2. Plots the real and imaginary normalized measured readout data and the fitted output field to 
@@ -60,7 +60,7 @@ IQ_traj(x_data,i_data,q_data,n_cal)
 
 
 ```python
-plot_t_domain(self)
+RO_class_5.IQ_traj.plot_t_domain()
 ````
 1. Plots the normalized drive field over time
 2. Plots the real and imaginary part of the intra-cavity field over time  
@@ -70,7 +70,7 @@ plot_t_domain(self)
 ### Parameter storage
 The extracted parameters can be accesed by the parameter dictionary attribute of the class 
 ```python
-self.ro_dict
+RO_class_5.IQ_traj.ro_dict
 ```
 
 ### Documentation reference
@@ -112,14 +112,14 @@ For initailizing the class these parameters are required:
 |'n_max'|'float'|Maximum mean photon number $\braket{\rm n}_{\rm max}$|
 |'three_seg_pulse_pars'|'np.ndarray'|Initial three-segment pulse parameters ($\sum_{i=1}^{3}{\Delta t_{i} \, a_{i}})$|
 ```python
-three_seg(T,kappa,chi,n_max,three_seg_pulse_pars)
+import opt_three_segment_final.three_seg(T,kappa,chi,n_max,three_seg_pulse_pars)
 ````
 
 ### Methods
 #### Internal methods called by the class after initialization:
 -------  
 ```python
-opt_out(dt)
+import opt_three_segment_final.three_seg.opt_out(dt)
 ````
 Executes the optimization for the Three-Segment Pulse by minimizing the cost function
 ##### Returns
@@ -128,32 +128,32 @@ Executes the optimization for the Three-Segment Pulse by minimizing the cost fun
 
 
 ```python
-    plot_pulse()
+    opt_three_segment_final.three_seg.plot_pulse()
 ```
 Plotting of the optimized Three-Segment Pulse (normalized by sqrt(kappa)) over time 
 ```python
-    plot(self.res)
+    opt_three_segment_final.three_seg.plot(self.res)
 ```
 Plotting of the intra-cavaity field trajectory for the qubit in $\ket{\rm{g}}$ and in $\ket{\rm{e}}$.
 ```python
-    get_SNR_ratio(self.res,self.opt_square)
+    opt_three_segment_final.three_seg.get_SNR_ratio(self.res,self.opt_square)
 ```
 Plots the squared instantaneous state separation over time for the three-segment pulse compared to the instant state separation for the square pulse
 #### Additional methods the class provides:
 
 ```python
-    self.get_n_t(self.res,self.opt_square)
+    opt_three_segment_final.three_seg.get_n_t(self.res,self.opt_square)
 ```
 Plots the instantaneous mean photon number over time for the three-segment pulse and the square pulse.
 ```python
-    plot_out(self.res)
+    opt_three_segment_final.three_seg.plot_out(self.res)
 ```
 1. Plots the output field trajectory on the complex plane.
 2. Plots the output field over time
 ### Parameter storage
 The optimized three-segment pulse paramteres are accessible through the class attribute
 ```python
-    self.res
+    opt_three_segment_final.three_seg.res
 ```
 ### Mititgation of issues
 If the optimization fails or if the "otpimized" paramters are not as desired, the intitial three-segment pulse paramters can be adapted or the total pulse duration can be adjusted.
