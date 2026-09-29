@@ -382,13 +382,6 @@ class three_seg:
         SNR_ratio = (SNR_afterT/SNR_rungup)
         SNR_ratio2 = (SNR_afterT2/SNR_rungup2)
         imp = SNR_ratio2/SNR_ratio #improvement factor
-
-        #print("Int. SNR from 0 to T three-segment:",SNR_rungup)
-        #print("Int. SNR from 0 to T square:",SNR_rungup2)
-        #print("Int. SNR/n_res from 0 to T three-segment:",SNR_rungup/n_res)
-        #print("Int. SNR/n_res from 0 to T square:",SNR_rungup2/n_res2)
-        #print("Int. SNR from T to cutoff three segmenself:",SNR_afterT)
-        #print("Int. SNR from T to cutoff square:",SNR_afterT2)
         print("SNR ratio three-segment:",SNR_ratio)
         print("SNR ratio square:",SNR_ratio2)
         print(f"Improvement by : {20*np.log10(imp)} dB")
@@ -514,7 +507,7 @@ class three_seg:
         maxamp = np.max(result.x[3:])
         self.amp_n_est = np.sqrt(n_tot/2200)
         self.amp_seg_max =np.max(np.abs(result.x[3:]))
-        self.amp_seg = (result.x[3:]/result.x[3])#np.max(np.abs(result.x[3:])))
+        self.amp_seg = (result.x[3:]/result.x[3])
         print(f"amp segments: {self.amp_seg}")
         return result.x
 
@@ -533,7 +526,6 @@ class three_seg:
         plt.ylabel(r"$\rm a_{\rm in}/ \sqrt{\kappa}$",fontsize=18)
         plt.tick_params(axis='both',which='major',labelsize=18)
         plt.rcParams['lines.linewidth'] =3.0
-        #plt.savefig("datafolder/_Three_seg_pulse.svg",bbox_inches='tight')
         plt.show()
 
         
@@ -555,7 +547,6 @@ class three_seg:
         plt.title(r"Intra-Cavity Field $\alpha$" +"\n" + "Phase Space Representation",fontsize=18)
         plt.tick_params(axis='both',which='major',labelsize=18)
         plt.rcParams['lines.linewidth'] =3.0
-        #plt.savefig('datafolder/_three_seg_alpha_IQ.svg',bbox_inches='tight')
         plt.show()
         discr_n3 = self.get_idx_T(t,(self.T-(self.res[0]+self.res[1])))
         n_last = abs(ag[discr_n3])
@@ -578,8 +569,6 @@ class three_seg:
         plt.xlabel("t (µs)")
         plt.xlim(0,(self.T+0.379)*1.1)
         plt.ylabel(r"$|\rm{a}_{\rm{out}}|$")
-        #plt.yscale('log')
-        #plt.ylim(0.9*np.sqrt(0.0124),5e0)
         plt.legend()
         plt.grid(True,'major')
         plt.title(r"Output field $|a(t)|$")
@@ -654,10 +643,9 @@ class three_seg:
        
 
         self.res =self.optout(self.guessed)
-        #self.out(self.guessed)
         self.plot_pulse()
         self.plot(self.res)
-        #self.plot(self._pass_initials(self.guessed))
+      
         self.get_SNR_ratio(self.res,self.opt_square)
         
     def desired_amp_add(self,dur,tf,n_des):
