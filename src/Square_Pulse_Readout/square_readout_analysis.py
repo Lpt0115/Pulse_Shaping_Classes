@@ -159,7 +159,6 @@ class IQ_traj:
         ring_dat = y[start2:]
         spec = np.abs(np.fft.rfft(np.real(ring_dat)))
         freqs = np.fft.rfftfreq(len(ring_dat),d = np.mean(np.diff(t[start2:])))
-        #plt.plot(freqs[0:],spec[0:])
         dc_cut = min(100,max(1,len(spec)//10))
         det_f = freqs[dc_cut+np.argmax(np.abs(spec[dc_cut:]))]
         return det_f
@@ -185,8 +184,7 @@ class IQ_traj:
             estimated readout parameters
             [amp,dur,shift,ph,BW,kappa,deltar,K,chi,chi,ph_ro]
         """
-    
-        #y_max = np.max(np.abs(y)*.5)
+
         x_data=x_data[~np.isnan(y)]
         t = x_data
         y_data =np.asarray(y)
@@ -202,10 +200,10 @@ class IQ_traj:
         start = np.nanargmin(y)
         maxamp = np.nanargmax(np.abs(y))
         if(maxamp<start):                          
-            shift = t[int(maxamp)]#*0.9
+            shift = t[int(maxamp)]
             dur = -(t[maxamp]-t[int(start)])
         else:
-            shift = t[int(start)]#*0.9
+            shift = t[int(start)]
             dur = (t[maxamp]-t[int(start)])
         
         start2 = maxamp
@@ -219,7 +217,6 @@ class IQ_traj:
             y = np.asarray(y)
             y = y[~np.isnan(y)]
             x = x[~np.isnan(y)]
-            #y= np.real(y)
             y_max = np.nanmax(np.abs(y))
             y = y/y_max
             start =np.argmax(y)
@@ -232,9 +229,6 @@ class IQ_traj:
             def at2(t,kappa,a):
                 return a*np.exp(-2.*(t*kappa/2.))
             popt,pcov = curve_fit(at2,x,y,p0=[20.,1.0],maxfev=20000)
-            #plt.plot(x,y)
-            #plt.plot(x,at2(x,*popt))
-            #plt.show()
             return popt[0]
             
             
@@ -257,17 +251,12 @@ class IQ_traj:
             def at(t,kappa,a):
                 return a*(1.0-np.exp(-(t*(kappa/2.))))-.1
             popt, pcov = curve_fit(at,x,y,p0=[9,1.0],maxfev=20000)
-            #plt.plot(x,y)
-            #plt.plot(x,at(x,*popt))
             return popt[0]
             
             
         ku = kappa_up_est(t,y_data)
         if np.isnan(ku):
             ku = 2*np.pi*1.
-            #ku= 1.
-        #else:
-        #    pass
   
         
    
@@ -278,9 +267,8 @@ class IQ_traj:
       
         #estimation of detuning via fft
         d_est = self.d_est(t,y_data)/len(t)
-        deltar =2*np.pi*d_est#*10#d_est*2.*np.pi*10
-        #print(deltar)
-        #deltar = 0.5*2*np.pi
+        deltar =2*np.pi*d_est
+     
         if(kappa<(0.8*2.*np.pi)):
             deltar = deltar
             
@@ -289,10 +277,10 @@ class IQ_traj:
         
         
         # amplitude estimaiton
-        amp = amp*kappa#*np.sqrt(2)
+        amp = amp*kappa
         
         #phases of the drive field and the output field
-        ph= ((np.pi/2)-self.phase_saving(y_data[int(maxamp*0.8):int(maxamp)])) #np.mean(np.angle(y_data)[0:int(0.05*start)])
+        ph= ((np.pi/2)-self.phase_saving(y_data[int(maxamp*0.8):int(maxamp)]))
         ph_ro = (np.pi-self.phase_saving(y_data[:int(start*0.8)]))
         if (np.isnan(ph).any() ):
             ph = (np.pi/2.)
@@ -335,9 +323,7 @@ class IQ_traj:
         t=t
         arr = pars
         amp,dur, shift, ph,BW = arr[:5]
-        section = (np.heaviside((t-shift),1)-np.heaviside((t-(dur+shift)),1))
-        #drive = ((amp*section)*np.exp(1j*ph))
-        
+        section = (np.heaviside((t-shift),1)-np.heaviside((t-(dur+shift)),1)) 
         dre= (amp*np.cos(ph))
         dimag= (amp*np.sin(ph))
         drive = (dre+1j*dimag)*section
@@ -400,7 +386,7 @@ class IQ_traj:
         neval = len(t)
         t_span = (ts,te)
         t_eval = np.linspace(*t_span,int(neval))
-        t_eval = t#np.asarray()
+        t_eval = t
         mstep= np.mean(np.diff(t_eval))
         if mstep <=0:
             mstep=1e-3
@@ -438,13 +424,9 @@ class IQ_traj:
         alpha = self.cav_sol(p,t)
         pulse = self.square_pulse(t,p)
         a_in = pulse/np.sqrt(p[5])
-        #if (p[4]>0):
-        #    sig =a_in
-        #    sos = signal.butter(1, p[4], 'lp', fs=1e3, output='sos')
-        #    a_in = signal.sosfilt(sos, sig)
-        
-        
-        a_out = (  (-a_in*np.exp(1j*p[-1])) +(alpha*np.sqrt(p[5])))
+
+          
+        a_out = ((-a_in*np.exp(1j*p[-1])) +(alpha*np.sqrt(p[5])))
         if (p[4]>0):
             sig =a_out
             sos = signal.butter(1, p[4], 'lp', fs=1.0/np.mean(np.diff(t)), output='sos')
@@ -478,28 +460,28 @@ class IQ_traj:
         
      
             
-        tol =1.
+        tol =.3
         min_tol = 1e-10
         lb =np.abs(np.array(p0))*(1-tol)
         ub =np.abs(np.array(p0))*(1+tol)+min_tol
         
         
         pars_names = [
-            'amplitude_drive',#: 0.0,
-            'duration',#: 0.0,
-            'shift',#: 0.0,
-            'ph_drive',#: 0.0,
-            'BW',#: 0.0,
-            'kappa',#: 0.0,
-            'detuning',#: 0.0,
-            'ph_ref',#:0.0,
+            'amplitude_drive',
+            'duration',
+            'shift',
+            'ph_drive',
+            'BW',
+            'kappa',
+            'detuning',
+            'ph_ref',
         ]
         
         pars_bounds =   {
         
             'amplitude_drive':
                 {   'lb': p0[0]*0.5,
-                    'ub': p0[0]*10.,#400.*p0[5]*np.sqrt(2),   
+                    'ub': p0[0]*10.,  
                 }
             ,
             'duration': 
@@ -516,14 +498,14 @@ class IQ_traj:
             ,
             'ph_drive': 
                {  
-                    'lb': -np.pi,#-np.inf,#0.0,
-                    'ub': np.pi,#   np.inf,#*1.1,   
+                    'lb': -np.pi,
+                    'ub': np.pi, 
                 }
             ,
             'BW': 
                {   
                     'lb': 0.0,
-                    'ub':   10.0#e-9#3.0,   
+                    'ub':   10.0  
                 }
             ,
             'kappa':
@@ -540,8 +522,8 @@ class IQ_traj:
             ,
             'ph_ref':
                {  
-                    'lb': -np.pi, #0.0,
-                    'ub':  np.pi*.9, #2*np.pi,   
+                    'lb': -np.pi,
+                    'ub':  np.pi*.9,
                 }
         
         }
@@ -555,7 +537,6 @@ class IQ_traj:
         
         
         
-        #print("Initial pars within boundaries:...  \n")
         for i in range (len(p0)):
             if((lb[i]>p0[i]) or (p0[i]>ub[i])):
                 print(f"Traceback: Intital pars {pars_names[i][:]} : {p0[i]} not within boundaries'")
@@ -577,7 +558,7 @@ class IQ_traj:
             the intra-cavity field model over time
         3. Parametric plot of the noramlized data and model
         """
-       # popt, pcov = self.fid_out()
+ 
         popt, pcov = self.popt, self.pcov
         t_staced = self.t_staced
         y_staced = self.y_staced
@@ -631,8 +612,6 @@ class IQ_traj:
             the intra-cavity field model over time
         """
         r = np.abs(self.ro_pars[0])/self.ro_pars[5]
-        #circ = Circle((np.cos(self.ro_pars[3])*r,np.sin(self.ro_pars[4])*r),r,edgecolor=(208/255,214/255,106/255),linestyle='--',facecolor='none') 
-        #circ_a_out = Circle((0.0,0.0),r,edgecolor=(24/255,126/255,73/255),linestyle='--',facecolor='none') 
         fi, ax = plt.subplots(4,1,sharex=True)
         ax[2].plot(self.x,self.y.real)
         ax[3].plot(self.x,self.y.imag)
@@ -649,7 +628,7 @@ class IQ_traj:
         ax[1].set_ylabel(r"$\rm{Re}\left(\alpha\right)$",color='blue')
         ax[2].set_ylabel(r"$\rm{Re}\left( \rm{a}_{\rm{out}} \right) / \sqrt{\kappa}$")
         ax[3].set_ylabel(r"$\rm{Im} \left( \rm{a}_{\rm{out}} \right) / \sqrt{\kappa}$")
-        ax[0].twinx().set_ylabel(r"$\rm{Im}\left( \rm{a}_{\rm in} \right) / \sqrt{\kappa}$",color='orange')
+        ax[0].twinx().set_ylabel(r"$\rm{Im}\left( \rm{a}_{\rm[in}} \right) / \sqrt{\kappa}$",color='orange')
         ax[1].twinx().set_ylabel(r"$\rm{Im} \left(\alpha\right)",color='orange')
 
 
