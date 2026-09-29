@@ -68,13 +68,13 @@ ro_square.plot_t_domain()
 ### Parameter storage
 The extracted parameters can be accessed by the parameter dictionary attribute of the class 
 ```python
-ro_square..ro_dict
+ro_square.ro_dict
 ```
 
 ### Documentation reference
 For detailed information on specific modules of the class the help() module can be used.
 ```python
-help(ro_square.)
+help(ro_square)
 ```
 ### Mitigation of issues    
 Providing experimental readout data, that has a rather smooth and pronounced square pulse response is helpful for parameter estimation. This implies a readout duration that is sufficiently long for reaching a steady-state response. If the fit fails, consider to apply a moving average with a window size that is not too coarse, this might help the fitting process.
