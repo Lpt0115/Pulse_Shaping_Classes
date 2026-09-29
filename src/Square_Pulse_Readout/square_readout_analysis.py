@@ -628,7 +628,7 @@ class IQ_traj:
         ax[2].set_ylabel(r"$\rm{Re}\left( \rm{a}_{\rm{out}} \right) / \sqrt{\kappa}$")
         ax[3].set_ylabel(r"$\rm{Im} \left( \rm{a}_{\rm{out}} \right) / \sqrt{\kappa}$")
         ax[0].twinx().set_ylabel(r"$\rm{Im} \left( \rm{a}_{\rm{in}} \right) / \sqrt{\kappa}$",color='orange')
-        ax[1].twinx().set_ylabel(r"$\rm{Im} \left( \alpha \right)",color='orange')
+        ax[1].twinx().set_ylabel(r"$\rm{Im} \left( \alpha \right)$",color='orange')
 
 
 
