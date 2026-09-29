@@ -112,13 +112,13 @@ For initializing the class these parameters are required:
 The durations of the segments $\Delta t_{i}$ are passed in µs and the amplitudes $a_{i}$ of the segments are relative to the drive amplitude $\epsilon$, which leads to the maximum mean photon number $\rm n_{\rm max}$ number inside the resonator $\epsilon = \sqrt{\rm n_{\rm max}}\sqrt{(\kappa/2)^{2}+(\chi)^{2}}$
 
 ```python
-three_opt =three_seg(T,kappa,chi,n_max,three_seg_pulse_pars)
+three_opt = three_seg(T,kappa,chi,n_max,three_seg_pulse_pars)
 ````
 ### Methods
 #### Internal methods called by the class after initialization:
 -------  
 ```python
-three_opt.opt_out(dt)
+three_opt.opt_out(three_seg_pulse_pars)
 ````
 Executes the optimization for the three-segment pulse by minimizing the cost function
 ##### Returns
