@@ -100,7 +100,7 @@ This class estimates optimal pulse parameters for a qubit readout using a three-
 ### Importing the class
 -------------------------
 ```python
-from Pulse_Shaping_Classes.src.Three_Segment_Optimization import opt_three_segment_final
+from Pulse_Shaping_Classes.src.Three_Segment_Optimization.opt_three_segment_final import three_seg
 ```
 ### Intitializing and executing the class
 For initailizing the class these parameters are required:
@@ -112,55 +112,51 @@ For initailizing the class these parameters are required:
 |'n_max'|'float'|Maximum mean photon number $\braket{\rm n}_{\rm max}$|
 |'three_seg_pulse_pars'|'np.ndarray'|Initial three-segment pulse parameters ($\sum_{i=1}^{3}{\Delta t_{i} }, \sum_{i=1}^{3}{ a_{i}})$|
 ```python
-import opt_three_segment_final.three_seg(T,kappa,chi,n_max,three_seg_pulse_pars)
+three_opt =three_seg(T,kappa,chi,n_max,three_seg_pulse_pars)
 ````
-
 ### Methods
 #### Internal methods called by the class after initialization:
 -------  
 ```python
-import opt_three_segment_final.three_seg.opt_out(dt)
+three_opt.opt_out(dt)
 ````
 Executes the optimization for the three-segment Pulse by minimizing the cost function
 ##### Returns
 ##### 'res': Optimized three-segment pulse parameters
-
-
-
 ```python
-    opt_three_segment_final.three_seg.plot_pulse()
+three_opt.plot_pulse()
 ```
 Plotting of the optimized three-segment Pulse (normalized by $\sqrt{\kappa}}) over time 
 ```python
-    opt_three_segment_final.three_seg.plot(self.res)
+three_opt.plot(self.res)
 ```
 Plotting of the intra-cavaity field trajectory for the qubit in $\ket{\rm{g}}$ and in $\ket{\rm{e}}$.
 ```python
-    opt_three_segment_final.three_seg.get_SNR_ratio(self.res,self.opt_square)
+three_opt.get_SNR_ratio(self.res,self.opt_square)
 ```
 Plots the squared instantaneous state separation over time for the three-segment pulse compared to the instantaneous state separation for the square pulse
 #### Additional methods the class provides:
 
 ```python
-    opt_three_segment_final.three_seg.get_n_t(self.res,self.opt_square)
+three_opt.get_n_t(three_opt.res,three_opt.opt_square)
 ```
 Plots the instantaneous mean photon number over time for the three-segment pulse and the square pulse.
 ```python
-    opt_three_segment_final.three_seg.plot_out(self.res)
+three_opt.plot_out(three_opt.res)
 ```
 1. Plots the output field trajectory on the complex plane.
 2. Plots the output field over time
 ### Parameter storage
 The optimized three-segment pulse paramteres are accessible through the class attribute
 ```python
-    opt_three_segment_final.three_seg.res
+   three_opt.res
 ```
 ### Mititgation of issues
 If the optimization fails or if the "otpimized" paramters are not as desired, the initial three-segment pulse parameters can be adapted or the total pulse duration can be adjusted.
 Optimization will benefit, if experimental setup parameters such as the linewidth of the resonator $\kappa/2\pi$ and the dispersive shift $\chi/2\pi$ are extracted from measurements as precise as possible
 ### Documentation reference
 ```python
-help(opt_three_segment_final.three_seg)
+help(three_opt)
 ```
 
 ## Working principle
