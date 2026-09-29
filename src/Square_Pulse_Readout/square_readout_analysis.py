@@ -164,7 +164,6 @@ class IQ_traj:
         return det_f
             
     # defining initial ro parameters
-    #@staticmethod
     def initial_pars(self,x_data,y):
         """
         Estimation of readout paramters, extracted from measured readout signal
