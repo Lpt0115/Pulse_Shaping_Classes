@@ -89,7 +89,7 @@ With the help of a function method, makes a rough estimate of readout parameters
 <p align="center">
   <img src="images/Square_Pulse_Readout_Class_workflow.png" width="500">
 </p>
-Applying this analysis class to both qubit state-dependent readout signal, the difference in detuning gives the frequency shift between the two responses of the resonator $2\chi/2\pi$ which is linked to the coupling to the qubit.
+Applying this analysis class to both qubit state-dependent readout signal, the difference in detuning gives the frequency shift between the two responses of the resonator $2 \chi / 2\pi$ which is linked to the coupling to the qubit.
 
 [^1]: McClure et al., Physcial Review Letter Applied 5,2016.
 [^2]: Hazra et al., Physcial Review Letters 134, 2025.
@@ -110,7 +110,7 @@ For initailizing the class these parameters are required:
 |'kappa'|'float'| decay rate $\kappa$ of the resonator (1e6 rad/s)|
 |'chi'|'float'|dispersive shift $\chi$ (1e6 rad/s)|
 |'n_max'|'float'|Maximum mean photon number $\braket{\rm n}_{\rm max}$|
-|'three_seg_pulse_pars'|'np.ndarray'|Initial three-segment pulse parameters ($\sum_{i=1}^{3}{\Delta t_{i} \, a_{i}})$|
+|'three_seg_pulse_pars'|'np.ndarray'|Initial three-segment pulse parameters ($\sum_{i=1}^{3}{\Delta t_{i} }\,,\sum_{i=1}^{3}{ a_{i}})$|
 ```python
 import opt_three_segment_final.three_seg(T,kappa,chi,n_max,three_seg_pulse_pars)
 ````
