@@ -110,7 +110,8 @@ For initializing the class these parameters are required:
 |'chi'|'float'|dispersive shift $\chi$ ($10^{6}$ rad/s)|
 |'n_max'|'float'|Maximum mean photon number $\braket{\rm n}_{\rm max}$|
 |'three_seg_pulse_pars'|'np.ndarray'|Initial three-segment pulse parameters ($\Delta t_{i}$, $a_{i}$)|
-The durations of the segments are passed in µs and the amplitudes of the segments are relative to the drive amplitude, which leads to the maximum mean photon $\sqrt{\mathrm{n}_{\mathrm{max}}}$ number inside the resonator $\epsilon = \sqrt{\mathrm{n}_{\mathrm{max}}}\,\sqrt{\left(\kappa/2\right)^{2}+\left(\chi\right)^{2}}$
+
+The durations of the segments are passed in µs and the amplitudes of the segments are relative to the drive amplitude, which leads to the maximum mean photon $\sqrt{\rm{n}_{\rm{max}}}$ number inside the resonator $\epsilon = \sqrt{\rm{n}_{\rm{max}}}\,\sqrt{\left(\kappa/2\right)^{2}+\left(\chi\right)^{2}}$
 ```python
 three_opt =three_seg(T,kappa,chi,n_max,three_seg_pulse_pars)
 ````
