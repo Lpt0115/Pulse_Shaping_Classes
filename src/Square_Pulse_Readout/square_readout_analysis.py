@@ -623,7 +623,7 @@ class IQ_traj:
         ax[2].plot(self.x,-self.ain.real/np.sqrt(self.ro_pars[5]),color='blue')
         ax[3].plot(self.x,-self.ain.imag/np.sqrt(self.ro_pars[5]),color='orange')
         ax[3].set_xlabel("t (µs)")
-        ax[0].set_ylabel(r"$\rm{Re}\left( \rm{a}_{\rm in} \right) / \sqrt{\kappa}$",color='blue')
+        ax[0].set_ylabel(r"$\rm{Re}\left( \rm{a}_{\rm{in}} \right) / \sqrt{\kappa}$",color='blue')
         ax[1].set_ylabel(r"$\rm{Re}\left( \alpha \right)$",color='blue')
         ax[2].set_ylabel(r"$\rm{Re}\left( \rm{a}_{\rm{out}} \right) / \sqrt{\kappa}$")
         ax[3].set_ylabel(r"$\rm{Im} \left( \rm{a}_{\rm{out}} \right) / \sqrt{\kappa}$")
