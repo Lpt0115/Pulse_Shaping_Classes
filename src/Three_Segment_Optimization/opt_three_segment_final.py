@@ -644,7 +644,7 @@ class three_seg:
        
         T = self.T
         amp_conv = np.sqrt(self.n_p)*np.sqrt((self.kappa/2.)**(2)+self.chi**(2))
-        self.initial_guess[3:]= self.initial_guess[3:]*amp_conv
+        self.initial_guess[3:]= self.initial_guess[3:]#*amp_conv
         self.guessed = self._initial_rel(self.initial_guess)
        
         #n= self.n_p # max instant mean photon number
