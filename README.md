@@ -27,7 +27,7 @@ The class uses a linear intra-cavity field $\alpha(t)$ model to extract the line
 ### Importing the class
 -------------------------
 ```python
-from Pulse_Shaping_Classes.src.Square_Pulse_Readout import square_readout_analysis
+from Pulse_Shaping_Classes.src.Square_Pulse_Readout.square_readout_analysis import IQ_traj
 ```
 ### Initializing and executing the class
 The following parameters are passed to the class for initializing:
@@ -99,7 +99,7 @@ This class estimates optimal pulse parameters for a qubit readout using a three-
 ### Importing the class
 -------------------------
 ```python
-from Pulse_Shaping_Classes.src.Three_Segment_Optimization import opt_three_segment_final
+from Pulse_Shaping_Classes.src.Three_Segment_Optimization.opt_three_segment_final import three_seg
 ```
 ### Initializing and executing the class
 For initializing the class these parameters are required:
