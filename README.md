@@ -111,7 +111,8 @@ For initializing the class these parameters are required:
 |'n_max'|'float'|Maximum mean photon number $\braket{\rm n}_{\rm max}$|
 |'three_seg_pulse_pars'|'np.ndarray'|Initial three-segment pulse parameters ($\Delta t_{i}$, $a_{i}$)|
 
-The durations of the segments $\Delta t_{i}$ are passed in µs and the amplitudes $a_{i}$ of the segments are relative to the drive amplitude $\epsilon$, which leads to the maximum mean photon number $\rm n_{\rm max}$ number inside the resonator $$\epsilon = \sqrt{\rm n_{\rm max}}\sqrt{(\kappa/2)^{2}+(\chi)^{2}}$$ [^1]
+The durations of the segments $\Delta t_{i}$ are passed in µs and the amplitudes $a_{i}$ of the segments are relative to the drive amplitude $\epsilon$, which leads to the maximum mean photon number $\rm n_{\rm max}$ number inside the resonator 
+$$\epsilon = \sqrt{\rm n_{\rm max}}\sqrt{(\kappa/2)^{2}+(\chi)^{2}}$$ [^1]
 
 ```python
 three_opt = three_seg(T,kappa,chi,n_max,three_seg_pulse_pars)
