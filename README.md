@@ -61,7 +61,7 @@ IQ_traj(x_data,i_data,q_data,n_cal)
 
 ```python
 RO_class_5.IQ_traj.plot_t_domain()
-````
+```
 1. Plots the normalized drive field over time
 2. Plots the real and imaginary part of the intra-cavity field over time  
 3. Plots the real and imaginary normalized measured readout data and the fitted output field to 
