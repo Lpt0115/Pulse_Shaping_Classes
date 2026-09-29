@@ -52,7 +52,7 @@ IQ_traj(x_data,i_data,q_data,n_cal)
 ```python
    RO_class_5.IQ_traj.plot()
 ```
-1. Displays the drive amplitude in MHz, the linewidth of the resonator $kappa/2\pi$, and the detuning $\delta/2\pi$ in MHz
+1. Displays the drive amplitude in MHz, the linewidth of the resonator $kappa / 2\pi$, and the detuning $\delta / 2\pi$ in MHz
 2. Plots the real and imaginary normalized measured readout data and the fitted output field to 
     the intra-cavity field model over time
 3. Parametric plot of the noramlized data and model
