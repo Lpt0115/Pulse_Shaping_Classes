@@ -21,7 +21,7 @@ For a more optimized readout a method of adding square pulses was used [^1] [^2]
 
 
 # Square pulse analysis class
-The class uses a linear intra-cavity field $\alpha(t)$ model to extract the linwidth of the resonator $\kappa$ and the detuning $\delta$ of the readout tone to the resonance frequnecy for a measured reflected output signal by fitting the model to the complex data. 
+The class uses a linear intra-cavity field $\alpha(t)$ model to extract the linewidth of the resonator $\kappa/2\pi$ and the detuning $\delta/2\pi$ of the readout tone to the resonance frequnecy for a measured reflected output signal by fitting the model to the complex data. 
 ## Usage
 ----------
 ### Importing the class
@@ -52,7 +52,7 @@ IQ_traj(x_data,i_data,q_data,n_cal)
 ```python
    RO_class_5.IQ_traj.plot()
 ```
-1. Displays the drive amplitude, the decay rate kappa, and the detuning in MHz
+1. Displays the drive amplitude in MHz, the linewidth of the resonator $kappa/2\pi$, and the detuning $\delta/2\pi$ in MHz
 2. Plots the real and imaginary normalized measured readout data and the fitted output field to 
     the intra-cavity field model over time
 3. Parametric plot of the noramlized data and model
@@ -83,18 +83,18 @@ help(RO_class_5.IQ_traj)
 Providing experimental readout data, that has a rather smooth and pronunced square pulse response is helpful for parameter estimation. This implies a readout duration that is sufficiently long enough for reaching a steady-state response. If the fit fails, consider to apply a moving average with a window size that is not too coarse, this might help the fitting process.
 ## Working principle
 This class uses the input output relations to analyse the readout signal, if a square pulse is used. Thereby, the relevant experimental parameters can be estimated.
-The intra-cavity parameters such as the linewidth $\kappa$ and the dispersive shift $\chi$ can be experimentally obtained by the state-dependent resonator phase response. Similarly, these parameters can be found by analyzing the readout signal of a square pulse.
+The intra-cavity parameters such as the linewidth $\kappa/2\pi$ and the dispersive shift $\chi$ can be experimentally obtained by the state-dependent resonator phase response. Similarly, these parameters can be found by analyzing the readout signal of a square pulse.
 The class normalizes the amplitude of both quadratures by the maximum of the absolute amplitude of the signal.
 With the help of a function method, makes a rough estimate of readout parameters:
 <p align="center">
   <img src="images/Square_Pulse_Readout_Class_workflow.png" width="500">
 </p>
-Applying this analysis class to both qubit state-dependent readout signal, the difference in detuning gives the frequency shift between the two responses of the resonator which is linked to the coupling to the qubit.
+Applying this analysis class to both qubit state-dependent readout signal, the difference in detuning gives the frequency shift between the two responses of the resonator $2\chi/2\pi$ which is linked to the coupling to the qubit.
 
 [^1]: McClure et al., Physcial Review Letter Applied 5,2016.
 [^2]: Hazra et al., Physcial Review Letters 134, 2025.
 # Three-Segment Optimization Class
-This class estimates optimal pulse parameters for a qubit readout using a Three-segment pulse with total pulse duration T for a specific readout setup, characterized by the linewidth of the readout resonator $\kappa/2\pi$ and the dispersive shift $\chi/2\pi$ of the resonance frequency of the resonator dependent on the qubit state either in $\ket{\rm g}$ or in $\ket{\rm e}$. The drive amplitude is capped to a specific maximum mean photon number $\braket{\rm n}_{\rm max}$ induced by the three-segment pulse.
+This class estimates optimal pulse parameters for a qubit readout using a three-segment pulse with total pulse duration T for a specific readout setup, characterized by the linewidth of the readout resonator $\kappa/2\pi$ and the dispersive shift $\chi/2\pi$ of the resonance frequency of the resonator dependent on the qubit state either in $\ket{\rm g}$ or in $\ket{\rm e}$. The drive amplitude is capped to a specific maximum mean photon number $\braket{\rm n}_{\rm max}$ induced by the three-segment pulse.
 ## Usage
 ----------
 ### Importing the class
@@ -121,16 +121,16 @@ import opt_three_segment_final.three_seg(T,kappa,chi,n_max,three_seg_pulse_pars)
 ```python
 import opt_three_segment_final.three_seg.opt_out(dt)
 ````
-Executes the optimization for the Three-Segment Pulse by minimizing the cost function
+Executes the optimization for the three-segment Pulse by minimizing the cost function
 ##### Returns
-##### 'res': Optimized Three-segment pulse parameters
+##### 'res': Optimized three-segment pulse parameters
 
 
 
 ```python
     opt_three_segment_final.three_seg.plot_pulse()
 ```
-Plotting of the optimized Three-Segment Pulse (normalized by sqrt(kappa)) over time 
+Plotting of the optimized three-segment Pulse (normalized by $\sqrt{\kappa}}) over time 
 ```python
     opt_three_segment_final.three_seg.plot(self.res)
 ```
@@ -138,7 +138,7 @@ Plotting of the intra-cavaity field trajectory for the qubit in $\ket{\rm{g}}$ a
 ```python
     opt_three_segment_final.three_seg.get_SNR_ratio(self.res,self.opt_square)
 ```
-Plots the squared instantaneous state separation over time for the three-segment pulse compared to the instant state separation for the square pulse
+Plots the squared instantaneous state separation over time for the three-segment pulse compared to the instantaneous state separation for the square pulse
 #### Additional methods the class provides:
 
 ```python
@@ -156,7 +156,7 @@ The optimized three-segment pulse paramteres are accessible through the class at
     opt_three_segment_final.three_seg.res
 ```
 ### Mititgation of issues
-If the optimization fails or if the "otpimized" paramters are not as desired, the intitial three-segment pulse paramters can be adapted or the total pulse duration can be adjusted.
+If the optimization fails or if the "otpimized" paramters are not as desired, the initial three-segment pulse parameters can be adapted or the total pulse duration can be adjusted.
 Optimization will benefit, if experimental setup parameters such as the linewidth of the resonator $\kappa/2\pi$ and the dispersive shift $\chi/2\pi$ are extracted from measurements as precise as possible
 ### Documentation reference
 ```python
