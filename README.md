@@ -113,20 +113,20 @@ The durations of the segments $\Delta t_{i}$ are passed in µs and the amplitude
 
 ```python
 three_opt = three_seg(T,kappa,chi,n_max,three_seg_pulse_pars)
-````
+```
 ### Methods
 #### Internal methods called by the class after initialization:
 -------  
 ```python
 three_opt.opt_out(three_seg_pulse_pars)
-````
+```
 Executes the optimization for the three-segment pulse by minimizing the cost function
 ##### Returns
 ##### 'res': Optimized three-segment pulse parameters
 ```python
 three_opt.plot_pulse()
 ```
-Plotting of the optimized three-segment pulse (normalized by $\sqrt{\kappa}}) over time 
+Plotting of the optimized three-segment pulse (normalized by $\sqrt{\kappa}$) over time 
 ```python
 three_opt.plot(three_opt.res)
 ```
@@ -163,7 +163,7 @@ help(three_opt)
 The optimization class uses the readout duration $T$, the resonator linewidth $\kappa$, the dispersive shift $\chi$, the maximum mean photon number $\rm n_{\mathrm{max}}$ and the  initial 
 three-segment pulse parameters ($\Delta t_{i} \, a_{i}$) for initialization and execution of the class.
 
-Inside the class, from the initial only the free pulse parameters are passed to the python module <bf>scipy.optimize.minimize()</bf>
+Inside the class, from the initial only the free pulse parameters are passed to the python module 'scipy.optimize.minimize()'
 
 Using the integrated state separation ratio as a cost function, the optimal pulse parameters are returned:
 
