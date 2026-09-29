@@ -6,14 +6,14 @@ Without going further into the details for readers with less physical background
 
 Measuring a qubit state is not as simple as for a classical measurement, since it is a quantum state.
 A way to measure the qubit state is realized by coupling the system to an quantum-mechanical LC oscillator.
-The resonance fequency of the resonator becomes dependent on the qubit state.
+The resonance frequency of the resonator becomes dependent on the qubit state.
 This allows to distinguish the qubit state by sending a readout microwave signal
 with a moderate amplitude at frequency $\omega_{rf}$ between the two qubit state-dependent
 resonance frequencies to the resonator
 and measuring the reflected signal.
 
 
-Before starting with pulse shaping, it is essential to know the sepcific parameters of the experimental setup for qubit readout.
+Before starting with pulse shaping, it is essential to know the specific parameters of the experimental setup for qubit readout.
 A square pulse readout analysis class was written for parameter extraction of time domain readout signals that is as a prerequisite for pulse shaping.
 
 Square pulse for superconducting qubit readout comes at cost of a rather slow decay of the readout signal after the information about the qubit state is obtained.
@@ -147,12 +147,12 @@ three_opt.plot_out(three_opt.res)
 1. Plots the output field trajectory on the complex plane.
 2. Plots the output field over time
 ### Parameter storage
-The optimized three-segment pulse paramteres are accessible through the class attribute
+The optimized three-segment pulse parameteres are accessible through the class attribute
 ```python
    three_opt.res
 ```
-### Mititgation of issues
-If the optimization fails or if the "optimized" paramters are not as desired, the initial three-segment pulse parameters can be adapted or the total pulse duration can be adjusted.
+### Mitigation of issues
+If the optimization fails or if the "optimized" parameters are not as desired, the initial three-segment pulse parameters can be adapted or the total pulse duration can be adjusted.
 Optimization will benefit, if experimental setup parameters such as the linewidth of the resonator $\kappa/2\pi$ and the dispersive shift $\chi/2\pi$ are extracted from measurements as precise as possible
 ### Documentation reference
 ```python
@@ -165,7 +165,7 @@ three-segment pulse parameters ($\Delta t_{i} \, a_{i}$) for initialization and 
 
 Inside the class, from the initial only the free pulse parameters are passed to the python module <bf>scipy.optimize.minimize()</bf>
 
-Using the integrated sate separation ratio as a cost function, the optimal pulse parameters are returned:
+Using the integrated state separation ratio as a cost function, the optimal pulse parameters are returned:
 
 <p align="center">
   <img src="images/Three_Segment_Class_workflow.png" width="500">
