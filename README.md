@@ -27,9 +27,7 @@ The class uses a linear intra-cavity field $\alpha(t)$ model to extract the line
 ### Importing the class
 -------------------------
 ```python
-#Assuming ANAlysis_class_ro is the working directory
-from ANAlysis_class_ro import RO_class_5
-from ANAlysis_class_ro.RO_class_5 import IQ_traj
+from Pulse_Shaping_Classes.src.Square_Pulse_Readout.square_readout_analysis import IQ_traj
 ```
 ### Initializing and executing the class
 The following parameters are passed to the class for initializing:
