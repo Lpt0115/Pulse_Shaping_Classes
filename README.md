@@ -38,7 +38,7 @@ The following parameters are passed to the class for initializing:
 |'q_data'|'np.ndarray'|Q-quadrature data (V)|
 |'n_cal'|'float'|AC-Stark calibration factor ($\braket{\rm n} / \rm a^{2}$)|
 ```python
-IQ_traj(x_data,i_data,q_data,n_cal)
+ro_square = IQ_traj(x_data,i_data,q_data,n_cal)
 ```
 
     
@@ -48,7 +48,7 @@ IQ_traj(x_data,i_data,q_data,n_cal)
 -------  
 
 ```python
-   RO_class_5.IQ_traj.plot()
+   ro_square.plot()
 ```
 1. Displays the drive amplitude $\epsilon /2\pi$, the linewidth of the resonator $\kappa / 2\pi$, and the detuning $\delta / 2\pi$ in MHz
 2. Plots the real and imaginary normalized measured readout data and the fitted output field to 
@@ -58,7 +58,7 @@ IQ_traj(x_data,i_data,q_data,n_cal)
 
 
 ```python
-RO_class_5.IQ_traj.plot_t_domain()
+ro_square.plot_t_domain()
 ```
 1. Plots the normalized drive field over time
 2. Plots the real and imaginary part of the intra-cavity field over time  
@@ -68,13 +68,13 @@ RO_class_5.IQ_traj.plot_t_domain()
 ### Parameter storage
 The extracted parameters can be accessed by the parameter dictionary attribute of the class 
 ```python
-RO_class_5.IQ_traj.ro_dict
+ro_square..ro_dict
 ```
 
 ### Documentation reference
 For detailed information on specific modules of the class the help() module can be used.
 ```python
-help(RO_class_5.IQ_traj)
+help(ro_square.)
 ```
 ### Mitigation of issues    
 Providing experimental readout data, that has a rather smooth and pronounced square pulse response is helpful for parameter estimation. This implies a readout duration that is sufficiently long for reaching a steady-state response. If the fit fails, consider to apply a moving average with a window size that is not too coarse, this might help the fitting process.
