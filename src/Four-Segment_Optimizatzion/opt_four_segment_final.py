@@ -384,7 +384,6 @@ class four_seg:
 
         plt.plot(t,inst_state_sep_four_seg,label='Four-Segment',color=(254/255,178/255,76/255))
         plt.plot(t,inst_state_sep_square,label='Square',color='black')
-        #plt.plot(t[discr2:],np.abs(a_g2[discr2]-a_e2[discr2])**(2)*np.exp(-kappa*(t[discr2:]-self.T)),linestyle='dashed',label='exp. decay',color='black')
         plt.vlines(self.T,0,1e6,linestyle='dashed',color='green',label=fr'$\rm{{T}} = {self.T}\,\rm{{µs}}$')
         plt.xlabel("t (µs)",fontsize=18)
         plt.xlim(0.*T,T*1.5)
@@ -395,7 +394,6 @@ class four_seg:
         plt.legend()
         plt.grid(True,'major')
         plt.tick_params(axis='both',which='major',labelsize=18)
-        #plt.savefig("Plot_graphics/four_seg_state_sep_opt_IQ",dpi=300)
         plt.show()
 
 
@@ -440,12 +438,6 @@ class four_seg:
         print("Int. SNR from 0 to T square:",SNR_rungup2)
         print("Int. SNR/n_res from 0 to T four segment:",SNR_rungup/n_res)
         print("Int. SNR/n_res from 0 to T square:",SNR_rungup2/n_res2)
-        #print("Int. SNR from T to cutoff three segmenself:",SNR_afterT)
-        #print("Int. SNR from T to cutoff square:",SNR_afterT2)
-        #print("SNR ratio three segmenself:",SNR_ratio)
-        #print("SNR ratio square:",SNR_ratio2)
-        #print("Improvementby factor of:",imp)
-        #print(f"Improvement by : {20*np.log10(imp)} dB")
         print(f" Residual photon number  {(n_res/n_res2)*100:.3f} % of residual photons of a square pulse ")
         
 
@@ -513,19 +505,16 @@ class four_seg:
         result.x = self._pass_initials(result.x)
         n_tot = self.get_n_int(result.x,T)
         opt_square = np.concatenate([[result.x[0]+result.x[1]],[result.x[5]]])
-        #self.get_SNR_ratio(result.x,opt_square)
+        self.get_SNR_ratio(result.x,opt_square)
         self.opt_square = opt_square
         self.result_opt = result.x
-        print(f"Time segmenself: {(result.x[:4]/T)}")
+        print(f"Time segments: {(result.x[:4]/T)}")
         self.time_seg = (result.x[:4]/T)
-        #print(f"Time segment: {self.time_seg}")
         maxamp = np.max(result.x[4:])
-        #discr =self.get_idx_T(self.t,T)
-        #n_t = np.sum((np.abs(a_g)**(2)+np.abs(a_e)**(2))/2.)*(t[1]-t[0])
         self.amp_n_est = np.sqrt(n_tot/2200)
         self.amp_seg_max =np.max(np.abs(result.x[4:]))
         self.amp_seg = (result.x[4:]/np.max(np.abs(result.x[4:])))
-        print(f"amp segment: {self.amp_seg}")
+        print(f"amp segments: {self.amp_seg}")
         return result.x
 
 
