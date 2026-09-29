@@ -128,11 +128,11 @@ three_opt.plot_pulse()
 ```
 Plotting of the optimized three-segment Pulse (normalized by $\sqrt{\kappa}}) over time 
 ```python
-three_opt.plot(self.res)
+three_opt.plot(three_opt.res)
 ```
 Plotting of the intra-cavaity field trajectory for the qubit in $\ket{\rm{g}}$ and in $\ket{\rm{e}}$.
 ```python
-three_opt.get_SNR_ratio(self.res,self.opt_square)
+three_opt.get_SNR_ratio(three_opt.res,three_opt.opt_square)
 ```
 Plots the squared instantaneous state separation over time for the three-segment pulse compared to the instantaneous state separation for the square pulse
 #### Additional methods the class provides:
