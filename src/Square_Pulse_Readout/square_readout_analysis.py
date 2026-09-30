@@ -291,7 +291,7 @@ class IQ_traj:
             pass
         ph = np.angle(np.exp(1j*self.phase_saving(y_data[int(maxamp*0.8):int(maxamp)])))
         ph_ro= np.angle(np.exp(1j*self.phase_saving(y_data[:int(start*0.8)])))
-        BW=2.0
+        BW=2.0 # upper cutoff frequency
            
         pars = np.array([amp,dur,shift,ph,BW,kappa,deltar,ph_ro],dtype='float')
         return pars
@@ -426,6 +426,7 @@ class IQ_traj:
 
           
         a_out = ((-a_in*np.exp(1j*p[-1])) +(alpha*np.sqrt(p[5])))
+      # filtering of the sharp jumps of the output field model
         if (p[4]>0):
             sig =a_out
             sos = signal.butter(1, p[4], 'lp', fs=1.0/np.mean(np.diff(t)), output='sos')
@@ -714,8 +715,7 @@ class IQ_traj:
         
         # Calculating the photon number 
         n_int=np.sum(np.abs(self.alpha)**(2))*(self.x[-1]/len(self.x))*self.ro_dict['kappa']
-        self.amp_presto =np.sqrt((n_int/2200))
-        #print(f"Was the presto ro_amplitude {self.amp_presto:.3f} ?")
+        self.amp =np.sqrt((n_int/2200))
         
        
         #self.fid_out()
